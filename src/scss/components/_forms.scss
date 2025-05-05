@@ -1,0 +1,42 @@
+.form-group {
+    margin-bottom: $spacing-xl;
+  
+    label {
+      display: block;
+      margin-bottom: $spacing-s;
+      color: $text-color-light;
+      font-size: $form-label-size;
+      font-weight: 500;
+    }
+  
+    input,
+    textarea {
+      width: 100%;
+      padding: $form-input-padding-y $form-input-padding-x;
+      border: 1px solid rgba($color-white, 0.1);
+      border-radius: $border-radius-s;
+      background: $bg-input;
+      color: $text-color-light;
+      font-family: $font-family-primary;
+      font-size: $form-input-size;
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+  
+      &::placeholder {
+        color: $text-color-placeholder;
+      }
+  
+      &:focus {
+        outline: none;
+        border-color: $color-success;
+        background: $bg-input-focus;
+        transform: translateY(-2px);
+        box-shadow: $shadow-input-focus-hover;
+      }
+    }
+  
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+  }

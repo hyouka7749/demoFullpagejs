@@ -1,0 +1,20 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: $footer-padding-y 0;
+    background: $bg-overlay-dark;
+    color: $text-color-light;
+    text-align: center;
+    font-size: $footer-font-size;
+    z-index: $z-index-header-footer;
+    opacity: 0;
+    visibility: hidden;
+    transition: $transition-fast;
+  }
+  
+  .fp-viewing-last-section .footer {
+    opacity: 1;
+    visibility: visible;
+  }

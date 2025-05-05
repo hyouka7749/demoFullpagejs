@@ -1,0 +1,78 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: $header-padding-y 0;
+    z-index: $z-index-header-footer;
+    transition: $transition-fast;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: $header-padding-x;
+    padding-right: $header-padding-x;
+  
+    .logo {
+      font-size: $logo-size;
+      font-weight: 700;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0; 
+  
+      &-demo { 
+        color: $color-white;
+        margin-right: $spacing-xs;
+      }
+  
+      &-front {
+        color: $color-primary;
+        text-shadow: 0 0 10px rgba($color-primary, 0.5);
+      }
+    }
+  
+    nav {
+      flex-grow: 1;
+      display: flex;
+      justify-content: flex-end;
+  
+      ul {
+        display: flex;
+        gap: $spacing-xxxl;
+        flex-wrap: nowrap; 
+      }
+  
+      li {
+        white-space: nowrap; 
+      }
+  
+      a {
+        color: $text-color-light;
+        font-size: $nav-link-size;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        position: relative;
+        padding: $spacing-xs 0;
+  
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: $color-accent;
+          transition: width $transition-fast;
+        }
+  
+        &:hover,
+        &.active {
+          color: $color-accent;
+  
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }

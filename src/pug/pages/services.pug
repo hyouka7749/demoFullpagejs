@@ -1,0 +1,39 @@
+doctype html
+html(lang="vi")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Dịch Vụ
+    link(rel='stylesheet', href='../css/main.css') 
+  body
+    header#header
+      .logo LOGO
+      nav
+        a(href="../") Trang chủ
+        a(href="../about/") Giới thiệu
+        a(href="../contact/") Liên hệ
+
+    main
+      section.services-content
+        h2 Dịch Vụ Của Chúng Tôi
+        .services-grid
+          .service-item
+            h3 Tư Vấn Bảo Tồn
+            p Đánh giá và đề xuất giải pháp bảo tồn đa dạng sinh học, phục hồi hệ sinh thái tự nhiên.
+          .service-item
+            h3 Giáo Dục Môi Trường
+            p Tổ chức các chương trình giáo dục, workshop về bảo vệ môi trường cho cộng đồng.
+          .service-item
+            h3 Nghiên Cứu Môi Trường
+            p Thực hiện các nghiên cứu về biến đổi khí hậu, đa dạng sinh học và phát triển bền vững.
+
+    script.
+      let hasScrolled = false;
+      window.addEventListener('scroll', () => {
+        if (!hasScrolled && window.scrollY > window.innerHeight * 0.5) {
+          hasScrolled = true;
+          setTimeout(() => {
+            window.location.href = '../'; 
+          }, 500);
+        }
+      });

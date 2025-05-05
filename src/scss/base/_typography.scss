@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: $font-family-primary;
+  color: $text-color-light;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0; 
+  font-weight: 700; 
+}
+
+p {
+  margin: 0 0 $spacing-m 0;
+}
+
+a {
+  color: $text-color-light;
+  text-decoration: none;
+  transition: $transition-fast;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

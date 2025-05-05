@@ -1,0 +1,479 @@
+@use 'sass:color';
+
+.section {
+  text-align: center;
+  color: $text-color-light;
+  font-size: $body-font-size;
+  padding-top: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 1;
+  will-change: opacity;
+  transition: $transition-medium;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: $z-index-overlay;
+    transition: background $transition-fast;
+  }
+
+  > div {
+    width: 100%;
+    padding: $section-padding-y $section-padding-x;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: $transition-slow;
+    position: relative;
+    z-index: $z-index-content;
+    box-sizing: border-box;
+  }
+
+  h1, h2 {
+    font-size: $section-title-size;
+    font-weight: 700;
+    margin-bottom: $spacing-l;
+    text-shadow: $shadow-text-medium;
+    letter-spacing: 1px;
+  }
+
+  p {
+    font-size: $section-paragraph-size;
+    max-width: 800px;
+    margin: 0 auto $spacing-l;
+    text-shadow: $shadow-text-light;
+  }
+
+  &.active > div {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.hero {
+    background: url('https://images.pexels.com/photos/842711/pexels-photo-842711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
+
+    .hero-content {
+    }
+  }
+
+  &:nth-child(2) {
+    background: url('https://images.pexels.com/photos/16821710/pexels-photo-16821710/free-photo-of-an-aerial-view-of-a-field-with-olive-trees.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
+
+    .about-content {
+      padding: 0 $spacing-xxxl;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: $spacing-xxxl;
+      margin-top: $spacing-xxxl;
+    }
+
+    .about-item {
+      background: $bg-glass-light;
+      padding: $item-padding;
+      border-radius: $border-radius-m;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      box-shadow: $shadow-box-light;
+      transition: $transition-fast;
+      transform: translateY(0);
+      will-change: transform, box-shadow;
+      opacity: 1;
+
+      &:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: $shadow-box-medium;
+      }
+
+      h3 {
+        color: $text-color-light;
+        margin-bottom: $spacing-l;
+        font-size: $item-title-size;
+        font-weight: 600;
+      }
+
+      p, li {
+        color: $text-color-light;
+        line-height: 1.8;
+        font-size: $item-text-size;
+      }
+
+      ul {
+      }
+
+      li {
+        margin-bottom: $spacing-s;
+        position: relative;
+        padding-left: $spacing-xl;
+
+        &::before {
+          content: '✓';
+          position: absolute;
+          left: 0;
+          color: $color-success;
+          background: transparent !important;
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  &:nth-child(3) {
+    background: url('https://images.pexels.com/photos/1229042/pexels-photo-1229042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
+
+    .services-content {
+      padding: 0 $spacing-xxxl;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: $spacing-xxxl;
+      margin-top: $spacing-xxxl;
+    }
+
+    .service-item {
+      background: $bg-glass-light;
+      padding: $item-padding;
+      border-radius: $border-radius-m;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      box-shadow: $shadow-box-light;
+      transition: $transition-fast;
+      transform: translateY(0);
+      will-change: transform, box-shadow, background;
+      opacity: 1;
+
+      &:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: $shadow-box-medium;
+        background: $bg-glass-light-hover;
+      }
+
+      h3 {
+        color: $text-color-light;
+        margin-bottom: $spacing-l;
+        font-size: $item-title-size;
+        font-weight: 600;
+      }
+
+      p {
+        color: $text-color-light;
+        line-height: 1.8;
+        font-size: $item-text-size;
+        max-width: none;
+        text-shadow: none;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &:nth-child(4) {
+    background: url('https://images.pexels.com/photos/1379640/pexels-photo-1379640.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
+
+    > div {
+       padding: $spacing-xxl $spacing-l $spacing-xl;
+    }
+
+    .contact-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0;
+
+      h2 {
+        font-size: calc($section-title-size * 0.75);
+        margin-bottom: $spacing-xs;
+        text-shadow: $shadow-text-medium;
+        @media (max-width: $bp-medium) {
+          font-size: 2.4rem;
+        }
+        @media (max-width: $bp-small) {
+          font-size: 2rem;
+        }
+      }
+
+      .contact-subtitle {
+        font-size: calc($section-paragraph-size * 0.8);
+        color: $text-color-light-secondary;
+        margin: 0 auto $spacing-xl;
+        font-weight: 300;
+        max-width: 650px;
+        line-height: 1.5;
+         @media (max-width: $bp-small) {
+          font-size: 0.9rem;
+          margin-bottom: $spacing-l;
+        }
+      }
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-l;
+      padding: 0 $spacing-l;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+
+      @media (max-width: $bp-large) {
+        padding: 0 $spacing-m;
+        gap: $spacing-m;
+      }
+
+      @media (max-width: $bp-medium) {
+        grid-template-columns: 1fr;
+        gap: $spacing-l;
+        padding: 0 $spacing-s;
+        max-width: 600px;
+      }
+       @media (max-width: $bp-small) {
+         max-width: 100%;
+       }
+    }
+
+    .contact-info,
+    .contact-form {
+      background: $bg-overlay-medium;
+      padding: $spacing-l;
+      border-radius: $border-radius-l;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: $shadow-box-light;
+
+      @media (max-width: $bp-medium) {
+        padding: $spacing-l;
+      }
+       @media (max-width: $bp-small) {
+        padding: $spacing-m;
+       }
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-l;
+      text-align: left;
+
+      &-item {
+        display: flex;
+        align-items: center;
+        gap: $spacing-m;
+
+        i {
+          font-size: calc($contact-icon-size * 0.75);
+          color: $color-success;
+          background: $bg-icon-contact;
+          padding: $spacing-m;
+          border-radius: $border-radius-round;
+          min-width: calc($contact-icon-wrapper-size * 0.75);
+          height: calc($contact-icon-wrapper-size * 0.75);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: $transition-fast;
+          box-shadow: $shadow-icon-contact;
+          flex-shrink: 0;
+          @media (max-width: $bp-medium) {
+            padding: $spacing-s;
+            min-width: 42px;
+            height: 42px;
+            font-size: 1.3rem;
+          }
+        }
+
+        &:hover i {
+          background: $color-success;
+          color: $color-white;
+          transform: scale(1.1);
+          box-shadow: $shadow-icon-contact-hover;
+        }
+
+        div {
+          h3 {
+            font-size: calc($contact-item-title-size * 0.8);
+            margin-bottom: $spacing-xs;
+            color: $text-color-light;
+            font-weight: 600;
+          }
+
+          p {
+            color: $text-color-light-secondary;
+            font-size: calc($item-text-size * 0.85);
+            line-height: 1.5;
+            text-shadow: none;
+            max-width: none;
+            margin: 0;
+          }
+        }
+      }
+
+      .social-links {
+         margin-top: $spacing-s;
+         text-align: left;
+
+         h3 {
+             font-size: calc($contact-item-title-size * 0.8);
+             margin-bottom: $spacing-s;
+             color: $text-color-light;
+             font-weight: 600;
+         }
+         .social-icons {
+            display: flex;
+            align-items: center;
+            gap: $spacing-m;
+
+            a.social-icon {
+                 display: inline-flex;
+                 transition: transform $transition-fast ease-out;
+                 text-decoration: none;
+                 &:hover {
+                     transform: scale(1.15);
+                 }
+                i {
+                  font-size: 1.2rem;
+                  color: $text-color-light-secondary;
+                  transition: color $transition-fast;
+                  background: none;
+                  padding: 0;
+                  min-width: auto;
+                  height: auto;
+                  box-shadow: none;
+                  border-radius: 0;
+
+                  &:hover {
+                      color: $color-success;
+                  }
+                }
+            }
+         }
+      }
+    }
+
+    .contact-form {
+       h3 {
+        font-size: calc($contact-form-title-size * 0.85);
+        color: $text-color-light;
+        margin-bottom: $spacing-l;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $spacing-m;
+        margin-bottom: $spacing-m;
+
+        @media (max-width: $bp-small) {
+          grid-template-columns: 1fr;
+          gap: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      .form-group {
+        margin-bottom: $spacing-m;
+         @media (max-width: $bp-small) {
+          margin-bottom: $spacing-m;
+         }
+         label {
+           display: block;
+           margin-bottom: $spacing-xs;
+           font-size: calc($item-text-size * 0.8);
+           color: $text-color-light-secondary;
+           text-align: left;
+         }
+         input, textarea {
+           width: 100%;
+           padding: $spacing-s $spacing-m;
+           background-color: rgba(0, 0, 0, 0.2); 
+           border: 1px solid rgba(255, 255, 255, 0.2); 
+           border-radius: $border-radius-s;
+           color: $text-color-light; 
+           font-size: calc($item-text-size * 0.85);
+           box-sizing: border-box;
+           transition: border-color $transition-fast, box-shadow $transition-fast;
+
+           &:focus {
+             outline: none;
+             border-color: $color-success;
+             box-shadow: 0 0 0 3px rgba($color-success, 0.2); 
+           }
+           &::placeholder {
+             color: $text-color-light-secondary; 
+             opacity: 1;
+           }
+         }
+         textarea {
+           min-height: 70px;
+           resize: vertical;
+         }
+      }
+
+      .form-row + .form-group {
+         margin-top: $spacing-m;
+      }
+
+      button {
+        width: 100%;
+        padding: $spacing-s $spacing-m;
+        background: $color-success;
+        color: $color-white;
+        border: none;
+        border-radius: $border-radius-s;
+        font-size: calc($button-font-size * 0.85);
+        font-weight: 600;
+        cursor: pointer;
+        transition: $transition-fast;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $spacing-s;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-top: $spacing-m;
+
+        i {
+          font-size: 1rem;
+          transition: transform $transition-fast;
+        }
+
+        &:hover {
+          background: color.adjust($color-success, $lightness: -10%);
+          transform: translateY(-2px);
+          box-shadow: $shadow-button-hover;
+
+          i {
+            transform: translateX(4px);
+          }
+        }
+      }
+    }
+  }
+}

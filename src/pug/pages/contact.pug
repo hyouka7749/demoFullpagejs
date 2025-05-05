@@ -1,0 +1,77 @@
+doctype html
+html(lang="vi")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Liên Hệ
+    link(rel='stylesheet', href='css/main.css')
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css")
+  body
+    header#header
+      .logo LOGO
+      nav
+        a(href="../") Trang chủ
+        a(href="../about/") Giới thiệu
+        a(href="../services/") Dịch vụ
+        a(href="#") Liên hệ
+
+    main#fullpage
+      section.section.contact-section
+        .section-content-wrapper
+          div.contact-content
+            h2 Liên Hệ Với Chúng Tôi
+            p.contact-subtitle Hãy để lại thông tin, chúng tôi sẽ liên hệ với bạn sớm nhất
+            .contact-grid
+              .contact-info
+                .contact-info-item
+                  i.fas.fa-map-marker-alt
+                  div
+                    h3 Địa chỉ
+                    p 123 Đường Xanh, Quận 1, TP.HCM
+                .contact-info-item
+                  i.fas.fa-envelope
+                  div
+                    h3 Email
+                    p info@greenearth.org
+                .contact-info-item
+                  i.fas.fa-phone
+                  div
+                    h3 Điện thoại
+                    p (84) 123 456 789
+                .social-links
+                  h3 Kết nối với chúng tôi
+                  .social-icons
+                    a.social-icon(href="#", aria-label="Facebook")
+                      i.fab.fa-facebook-f
+                    a.social-icon(href="#", aria-label="Google")
+                      i.fab.fa-google
+                    a.social-icon(href="#", aria-label="LinkedIn")
+                      i.fab.fa-linkedin-in
+
+              .contact-form
+                h3 Gửi Tin Nhắn
+                form(action="#", method="POST")
+                  .form-row
+                    .form-group
+                      label(for="name") Họ và tên
+                      input#name(type="text", name="name", placeholder="Nhập họ và tên", required)
+                    .form-group
+                      label(for="subject") Chủ đề
+                      input#subject(type="text", name="subject", placeholder="Nhập chủ đề", required)
+                  .form-group
+                    label(for="message") Nội dung tin nhắn
+                    textarea#message(name="message", placeholder="Nhập nội dung tin nhắn", required)
+                  button(type="submit")
+                    span Gửi Tin Nhắn
+                    i.fas.fa-paper-plane
+
+    script.
+      let hasScrolled = false;
+      window.addEventListener('scroll', () => {
+        if (!hasScrolled && window.scrollY > window.innerHeight * 0.5) {
+          hasScrolled = true;
+          setTimeout(() => {
+            window.location.href = '../'; 
+          }, 500);
+        }
+      });

@@ -1,0 +1,127 @@
+doctype html
+html(lang="vi")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title FullPage Demo
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css")
+    link(rel='stylesheet', href='css/main.css') 
+  body
+    #loading
+      .spinner
+
+    header.header
+      .logo
+        span.logo-demo DEMO
+        span.logo-front FRONT
+      nav
+        ul
+          li
+            a.nav-link.active(href="#home") Trang chủ
+          li
+            a.nav-link(href="#about") Giới thiệu
+          li
+            a.nav-link(href="#services") Dịch vụ
+          li
+            a.nav-link(href="#contact") Liên hệ
+
+    #fullpage
+      .section.hero
+        .hero-content
+          h1.animate-text Chào Mừng Đến Với Demo Front
+          p.animate-text-delay Khám phá thiên nhiên - Bảo vệ môi trường
+          .scroll-hint
+            span Cuộn xuống
+            i.fas.fa-chevron-down
+      .section#about-section     
+      .section#services-section  
+      .section.last-section#contact-section 
+
+    footer#footer.site-footer
+      .footer-content
+        p © 2025 Demo Front. 
+        .social-icons
+          a.social-icon(href="#", aria-label="Facebook")
+            i.fab.fa-facebook-f
+          a.social-icon(href="#", aria-label="Google")
+            i.fab.fa-google
+          a.social-icon(href="#", aria-label="LinkedIn")
+            i.fab.fa-linkedin-in
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js")
+    script.
+      window.addEventListener('load', function() {
+        const loadingElement = document.getElementById('loading');
+        if (loadingElement) {
+          loadingElement.style.opacity = '0';
+          setTimeout(() => {
+            loadingElement.style.display = 'none';
+          }, 500); 
+        }
+      });
+
+      function loadContent(url, targetId) {
+        const target = document.getElementById(targetId);
+        if (!target) {
+          console.error(`Error: Target element with ID "${targetId}" not found.`);
+          return; 
+        }
+        target.style.opacity = '0'; 
+
+        fetch(url)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status} while fetching ${url}`);
+            }
+            return response.text(); 
+          })
+          .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const mainContent = doc.querySelector('main');
+
+            if (mainContent) {
+              target.innerHTML = mainContent.innerHTML; 
+              setTimeout(() => {
+                target.style.opacity = '1'; 
+              }, 50); 
+            } else {
+             console.error(`Error: Could not find <main> element in fetched content from ${url}`);
+             target.innerHTML = '<p>Lỗi tải nội dung.</p>';
+             target.style.opacity = '1';
+           }
+          })
+          .catch(error => {
+            console.error('Error loading content:', error);
+            target.innerHTML = `<p>Lỗi khi tải nội dung từ ${url}. Vui lòng kiểm tra đường dẫn và đảm bảo file tồn tại.</p>`;
+            target.style.opacity = '1';
+          });
+      }
+
+      loadContent('about.html', 'about-section');     
+      loadContent('services.html', 'services-section'); 
+      loadContent('contact.html', 'contact-section');   
+
+      new fullpage('#fullpage', {
+        autoScrolling: true,
+        scrollHorizontally: true,
+        navigation: true,
+        anchors: ['home', 'about', 'services', 'contact'],
+        navigationTooltips: ['Trang chủ', 'Giới thiệu', 'Dịch vụ', 'Liên hệ'],
+        showActiveTooltip: true,
+        scrollOverflow: false, 
+        fitToSection: true,
+        animateAnchor: true,
+        easingcss3: 'cubic-bezier(0.645, 0.045, 0.355, 1)', 
+        onLeave: function(origin, destination, direction) {
+          const navLinks = document.querySelectorAll('.nav-link');
+          navLinks.forEach(link => link.classList.remove('active'));
+          const activeLink = document.querySelector(`.nav-link[href="#${destination.anchor}"]`);
+          if (activeLink) {
+              activeLink.classList.add('active');
+          }
+
+        },
+        afterLoad: function(origin, destination, direction) {
+        }
+      });
