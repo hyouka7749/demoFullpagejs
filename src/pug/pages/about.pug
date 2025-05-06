@@ -6,30 +6,20 @@ html(lang="vi")
     title Về Chúng Tôi
     link(rel='stylesheet', href='css/main.css')
   body
-    header#header
-      .logo LOGO
-      nav
-        a(href="../") Trang chủ
-        a(href="../services/") Dịch vụ
-        a(href="../contact/") Liên hệ
-
     main
       section.about-content
         h2 Về Chúng Tôi
-        .about-grid
-          .about-item
-            h3 Tầm Nhìn
-            p Chúng tôi hướng đến một tương lai nơi con người và thiên nhiên cùng tồn tại hài hòa. Mỗi hành động nhỏ đều góp phần tạo nên sự thay đổi lớn cho môi trường.
-          .about-item
-            h3 Sứ Mệnh
-            p Nâng cao nhận thức về bảo vệ môi trường, thúc đẩy lối sống xanh và bền vững. Chúng tôi tin rằng mỗi cá nhân đều có thể trở thành người bảo vệ thiên nhiên.
-          .about-item
-            h3 Giá Trị Cốt Lõi
-            ul
-              li Bền vững
-              li Tôn trọng thiên nhiên
-              li Đổi mới sáng tạo
-              li Trách nhiệm xã hội
+        p Video giới thiệu về tổ chức của chúng tôi
+        iframe(
+          width='800', 
+          height='450', 
+          src='https://www.youtube.com/embed/UYmvFzDuO5k?autoplay=1&playsinline=1', 
+          title='Video giới thiệu YouTube', 
+          frameborder='0', 
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share', 
+          referrerpolicy='strict-origin-when-cross-origin', 
+          allowfullscreen
+        )
 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js")
     script.
@@ -37,7 +27,7 @@ html(lang="vi")
         autoScrolling: true,
         onLeave: function(origin, destination, direction){
           if (direction === 'down') {
-            window.location.href = 'about/';
+            window.location.href = 'about/'; 
           }
         }
       });
