@@ -36,7 +36,7 @@ html(lang="vi")
             i.fas.fa-chevron-down
       .section#about-section     
       .section#services-section  
-      .section.last-section#contact-section 
+      .section#contact-section 
 
     footer#footer.site-footer
       .footer-content
@@ -103,16 +103,97 @@ html(lang="vi")
       loadContent('contact.html', 'contact-section');   
 
       new fullpage('#fullpage', {
-        autoScrolling: true,
-        scrollHorizontally: true,
-        navigation: true,
-        anchors: ['home', 'about', 'services', 'contact'],
-        navigationTooltips: ['Trang chủ', 'Giới thiệu', 'Dịch vụ', 'Liên hệ'],
-        showActiveTooltip: true,
-        scrollOverflow: false, 
-        fitToSection: true,
-        animateAnchor: true,
-        easingcss3: 'cubic-bezier(0.645, 0.045, 0.355, 1)', 
+        // Navigation
+	menu: '#menu',
+	lockAnchors: false,
+	anchors:['firstPage', 'secondPage'],
+	navigation: false,
+	navigationPosition: 'right',
+	navigationTooltips: ['firstSlide', 'secondSlide'],
+	showActiveTooltip: false,
+	slidesNavigation: false,
+	slidesNavPosition: 'bottom',
+
+	// Scrolling
+	css3: true,
+	scrollingSpeed: 700,
+	autoScrolling: true,
+	fitToSection: true,
+	fitToSectionDelay: 600,
+	scrollBar: false,
+	easing: 'easeInOutCubic',
+	easingcss3: 'ease',
+	loopBottom: false,
+	loopTop: false,
+	loopHorizontal: true,
+	continuousVertical: false,
+	continuousHorizontal: false,
+	scrollHorizontally: false,
+	interlockedSlides: false,
+	dragAndMove: false,
+	offsetSections: false,
+	resetSliders: false,
+	fadingEffect: false,
+	normalScrollElements: '#element1, .element2',
+	scrollOverflow: true,
+	scrollOverflowMacStyle: false,
+	scrollOverflowReset: false,
+	skipIntermediateItems: false,
+	touchSensitivity: 15,
+	bigSectionsDestination: null,
+	adjustOnNavChange: true,
+
+	// Accessibility
+	keyboardScrolling: true,
+	animateAnchor: true,
+	recordHistory: true,
+
+	// Design
+	controlArrows: true,
+	controlArrowsHTML: [
+		'<div class="fp-arrow"></div>', 
+		'<div class="fp-arrow"></div>'
+	],
+	verticalCentered: true,
+	sectionsColor : ['#ccc', '#fff'],
+	paddingTop: '3em',
+	paddingBottom: '10px',
+	fixedElements: '#header, .footer',
+	responsiveWidth: 0,
+	responsiveHeight: 0,
+	responsiveSlides: false,
+	effects: false,
+	effectsOptions: [Object],
+	parallax: false,
+	parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
+	dropEffect: false,
+	dropEffectOptions: { speed: 2300, color: '#F82F4D', zIndex: 9999},
+	waterEffect: false,
+	waterEffectOptions: { animateContent: true, animateOnMouseMove: true},
+	cards: false,
+	cardsOptions: {perspective: 100, fadeContent: true, fadeBackground: true},
+
+	// Custom selectors
+	sectionSelector: '.section',
+	slideSelector: '.slide',
+
+	lazyLoading: true,
+	lazyLoadThreshold: 0,
+	observer: true,
+
+
+	// Events
+	beforeLeave: function(origin, destination, direction, trigger){},
+	onLeave: function(origin, destination, direction, trigger){},
+	afterLoad: function(origin, destination, direction, trigger){},
+	afterRender: function(){},
+	afterResize: function(width, height){},
+	afterReBuild: function(){},
+	afterResponsive: function(isResponsive){},
+	afterSlideLoad: function(section, origin, destination, direction, trigger){},
+	onSlideLeave: function(section, origin, destination, direction, trigger){},
+	onScrollOverflow: function(section, slide, position, direction){}
+
         onLeave: function(origin, destination, direction) {
           const navLinks = document.querySelectorAll('.nav-link');
           navLinks.forEach(link => link.classList.remove('active'));

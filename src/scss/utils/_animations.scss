@@ -51,7 +51,7 @@
   
   .scroll-hint {
     position: fixed; 
-    bottom: $spacing-m; 
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     color: $text-color-light;
@@ -60,6 +60,7 @@
     cursor: pointer;
     padding: $spacing-m;
     z-index: $z-index-scroll-hint;
+    
   
     span {
       display: block;
