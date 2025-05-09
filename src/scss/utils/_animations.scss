@@ -43,10 +43,14 @@
     animation-duration: 0.8s;
     animation-timing-function: ease;
     animation-fill-mode: forwards; 
+    mix-blend-mode: exclusion;
+
+    
   }
   
   .animate-text-delay {
     animation-delay: 0.3s;
+    
   }
   
   .scroll-hint {

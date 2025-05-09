@@ -41,13 +41,23 @@
     box-sizing: border-box;
   }
 
-  h1, h2 {
+  h2 {
     font-size: $section-title-size;
     font-weight: 700;
     margin-bottom: $spacing-l;
     text-shadow: $shadow-text-medium;
     letter-spacing: 1px;
   }
+  h1 {
+    mix-blend-mode: exclusion;
+    font-family: Candara;
+    font-size: 5rem;
+    text-align: center;
+    margin: 0; 
+    padding: 20vh 200px;
+    color: rgb(255, 255, 255);
+  }
+
 
   p {
     font-size: $section-paragraph-size;
