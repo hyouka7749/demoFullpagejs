@@ -27,13 +27,3 @@ html(lang="vi")
             h3 Nghiên Cứu Môi Trường
             p Thực hiện các nghiên cứu về biến đổi khí hậu, đa dạng sinh học và phát triển bền vững.
 
-    script.
-      let hasScrolled = false;
-      window.addEventListener('scroll', () => {
-        if (!hasScrolled && window.scrollY > window.innerHeight * 0.5) {
-          hasScrolled = true;
-          setTimeout(() => {
-            window.location.href = '../'; 
-          }, 500);
-        }
-      });
