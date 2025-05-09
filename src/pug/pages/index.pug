@@ -6,7 +6,7 @@ html(lang="vi")
     title FullPage Demo
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css")
-    link(rel='stylesheet', href='css/main.css') 
+    link(rel='stylesheet', href='css/main.css')
   body
     #loading
       .spinner
@@ -34,46 +34,115 @@ html(lang="vi")
           .scroll-hint
             span Cuộn xuống
             i.fas.fa-chevron-down
-      .section#about-section     
-      .section#services-section  
-      .section#contact-section 
-
+      .section#about-section
+      .section#services-section
+      .section#contact-section
+        .section-content-wrapper
+          div.contact-content
+            h2 Liên Hệ Với Chúng Tôi
+            p.contact-subtitle Hãy để lại thông tin, chúng tôi sẽ liên hệ với bạn sớm nhất
+            .contact-grid
+              .contact-info
+                .contact-info-item
+                  i.fas.fa-map-marker-alt
+                  div
+                    h3 Địa chỉ
+                    p 123 Đường Xanh, Quận 1, TP.HCM
+                .contact-info-item
+                  i.fas.fa-envelope
+                  div
+                    h3 Email
+                    p info@greenearth.org
+                .contact-info-item
+                  i.fas.fa-phone
+                  div
+                    h3 Điện thoại
+                    p (84) 123 456 789
+                .social-links
+                  h3 Kết nối với chúng tôi
+                  .social-icons
+                    a.social-icon(href="#", aria-label="Facebook")
+                      i.fab.fa-facebook-f
+                    a.social-icon(href="#", aria-label="Google")
+                      i.fab.fa-google
+                    a.social-icon(href="#", aria-label="LinkedIn")
+                      i.fab.fa-linkedin-in
+              .contact-form
+                h3 Gửi Tin Nhắn
+                form(action="#", method="POST")
+                  .form-row
+                    .form-group
+                      label(for="name") Họ và tên
+                      input#name(type="text", name="name", placeholder="Nhập họ và tên", required)
+                    .form-group
+                      label(for="subject") Chủ đề
+                      input#subject(type="text", name="subject", placeholder="Nhập chủ đề", required)
+                  .form-group
+                    label(for="message") Nội dung tin nhắn
+                    textarea#message(name="message", placeholder="Nhập nội dung tin nhắn", required)
+                  button(type="submit")
+                    span Gửi Tin Nhắn
+                    i.fas.fa-paper-plane
     footer#footer.site-footer
       .footer-content
-        p © 2025 Demo Front. 
-        .social-icons
-          a.social-icon(href="#", aria-label="Facebook")
-            i.fab.fa-facebook-f
-          a.social-icon(href="#", aria-label="Google")
-            i.fab.fa-google
-          a.social-icon(href="#", aria-label="LinkedIn")
-            i.fab.fa-linkedin-in
+        p © 2025 Demo Front.
+      .social-icons
+        a.social-icon(href="#", aria-label="Facebook")
+          i.fab.fa-facebook-f
+        a.social-icon(href="#", aria-label="Google")
+          i.fab.fa-google
+        a.social-icon(href="#", aria-label="LinkedIn")
+          i.fab.fa-linkedin-in
+
     script(src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js")
     script.
+      var youtubeAPIReady = false;
+      var player;
+      var YT_API;
+
       window.addEventListener('load', function() {
         const loadingElement = document.getElementById('loading');
         if (loadingElement) {
           loadingElement.style.opacity = '0';
           setTimeout(() => {
             loadingElement.style.display = 'none';
-          }, 500); 
+          }, 500);
         }
       });
+
+      function initializePlayerForId(playerId) {
+        if (youtubeAPIReady && YT_API && document.getElementById(playerId)) {
+          if (!player || (player.getIframe && player.getIframe().id !== playerId) ) {
+            console.log('Initializing YouTube player for ID: ' + playerId + ' from index.pug');
+            player = new YT_API.Player(playerId, {
+              events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          } else if (player && player.getIframe && player.getIframe().id === playerId) {
+            console.log('Player already initialized for ' + playerId);
+          }
+        } else {
+          if (!youtubeAPIReady) console.log("YouTube API not ready for " + playerId);
+          if (!document.getElementById(playerId)) console.log("Player iframe not found in DOM for " + playerId);
+        }
+      }
 
       function loadContent(url, targetId) {
         const target = document.getElementById(targetId);
         if (!target) {
           console.error(`Error: Target element with ID "${targetId}" not found.`);
-          return; 
+          return;
         }
-        target.style.opacity = '0'; 
+        target.style.opacity = '0';
 
         fetch(url)
           .then(response => {
             if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status} while fetching ${url}`);
             }
-            return response.text(); 
+            return response.text();
           })
           .then(html => {
             const parser = new DOMParser();
@@ -81,15 +150,32 @@ html(lang="vi")
             const mainContent = doc.querySelector('main');
 
             if (mainContent) {
-              target.innerHTML = mainContent.innerHTML; 
+              target.innerHTML = mainContent.innerHTML;
+              
+              const scripts = mainContent.querySelectorAll("script:not([src*='youtube.com/iframe_api'])"); // Không thực thi lại script API youtube nếu có trong file con
+              scripts.forEach(oldScript => {
+                const newScript = document.createElement("script");
+                Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                oldScript.parentNode.replaceChild(newScript, oldScript);
+              });
+
+              if (targetId === 'about-section' && target.querySelector('#youtube-player')) {
+                console.log('About section content loaded, attempting to initialize player.');
+                initializePlayerForId('youtube-player');
+              }
+
               setTimeout(() => {
-                target.style.opacity = '1'; 
-              }, 50); 
+                target.style.opacity = '1';
+                if (typeof fullpage_api !== 'undefined' && fullpage_api.reBuild) {
+                  fullpage_api.reBuild();
+                }
+              }, 50);
             } else {
-             console.error(`Error: Could not find <main> element in fetched content from ${url}`);
-             target.innerHTML = '<p>Lỗi tải nội dung.</p>';
-             target.style.opacity = '1';
-           }
+              console.error(`Error: Could not find <main> element in fetched content from ${url}`);
+              target.innerHTML = '<p>Lỗi tải nội dung.</p>';
+              target.style.opacity = '1';
+            }
           })
           .catch(error => {
             console.error('Error loading content:', error);
@@ -98,31 +184,128 @@ html(lang="vi")
           });
       }
 
-      loadContent('about.html', 'about-section');     
-      loadContent('services.html', 'services-section'); 
-      loadContent('contact.html', 'contact-section');   
-
       new fullpage('#fullpage', {
         autoScrolling: true,
+        scrollBar: false,
         scrollHorizontally: true,
-        navigation: true, 
+        navigation: true,
         anchors: ['home', 'about', 'services', 'contact'],
         navigationTooltips: ['Trang chủ', 'Giới thiệu', 'Dịch vụ', 'Liên hệ'],
         showActiveTooltip: true,
-        scrollOverflow: false, 
+        scrollOverflow: true,
         fitToSection: true,
         animateAnchor: true,
         scrollingSpeed: 700,
+        licenseKey: 'YOUR_KEY_HERE',
+
+        afterRender: function(){
+          loadContent('about.html', 'about-section');
+          loadContent('services.html', 'services-section');
+        },
 
         onLeave: function(origin, destination, direction) {
           const navLinks = document.querySelectorAll('.nav-link');
           navLinks.forEach(link => link.classList.remove('active'));
           const activeLink = document.querySelector(`.nav-link[href="#${destination.anchor}"]`);
           if (activeLink) {
-              activeLink.classList.add('active');
+            activeLink.classList.add('active');
           }
 
+          if (origin.anchor === 'about' && player && typeof player.pauseVideo === 'function') {
+            player.pauseVideo();
+            console.log('About video paused via onLeave (player from index.pug)');
+          }
+
+          const destinationSection = destination.item;
+          const textElements = destinationSection.querySelectorAll('.animate-text, .animate-text-delay');
+          if(textElements.length > 0){
+            textElements.forEach(el => {
+              el.style.opacity = '0';
+              el.style.transform = 'translateY(20px)';
+            });
+          }
         },
+
         afterLoad: function(origin, destination, direction) {
-        }
+          const currentSection = destination.item;
+          const animatedH1 = currentSection.querySelector('h1.animate-text');
+          const animatedP = currentSection.querySelector('p.animate-text-delay');
+          const otherAnimatedElements = currentSection.querySelectorAll('.animate-text:not(h1), .animate-text-delay:not(p)');
+
+          if (animatedH1) {
+            setTimeout(() => {
+              animatedH1.style.opacity = 1;
+              animatedH1.style.transform = 'translateY(0)';
+            }, 50);
+          }
+          if (animatedP) {
+            setTimeout(() => {
+              animatedP.style.opacity = 1;
+              animatedP.style.transform = 'translateY(0)';
+            }, 250);
+          }
+          
+          otherAnimatedElements.forEach((el, index) => {
+            setTimeout(() => {
+                el.style.opacity = 1;
+                el.style.transform = 'translateY(0)';
+            }, 250 + (index * 100));
+          });
+        },
+        controlArrows: true,
+        controlArrowsHTML: [
+          '<div class="fp-arrow"></div>',
+          '<div class="fp-arrow"></div>'
+        ],
+        loopHorizontal: true
       });
+
+      function onYouTubeIframeAPIReady() {
+        console.log("YouTube API is ready (loaded globally from index.pug)");
+        youtubeAPIReady = true;
+        YT_API = YT;
+        initializePlayerForId('youtube-player'); 
+      }
+
+      function onPlayerReady(event) {
+        console.log("Player is ready (controlled from index.pug)");
+      }
+
+      function onPlayerStateChange(event) {
+        console.log("Player state changed (controlled from index.pug): ", event.data);
+        if (player && YT_API && event.data === YT_API.PlayerState.PLAYING) {
+          console.log('Video is playing.');
+        }
+      }
+
+      function playVideo() {
+        if (player && typeof player.playVideo === 'function') {
+          player.playVideo();
+        } else { console.error("Player not available or playVideo not a function."); }
+      }
+
+      function pauseVideo() {
+        if (player && typeof player.pauseVideo === 'function') {
+          player.pauseVideo();
+        } else { console.error("Player not available or pauseVideo not a function."); }
+      }
+
+      function stopVideo() {
+        if (player && typeof player.stopVideo === 'function') {
+          player.stopVideo();
+        } else { console.error("Player not available or stopVideo not a function."); }
+      }
+
+      function muteVideo() {
+        if (player && typeof player.mute === 'function') {
+          player.mute();
+        } else { console.error("Player not available or mute not a function."); }
+      }
+      
+      function unMuteVideo() {
+        if (player && typeof player.unMute === 'function') {
+          player.unMute();
+        } else { console.error("Player not available or unMute not a function."); }
+      }
+
+    script(src="https://www.youtube.com/iframe_api")

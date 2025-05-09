@@ -50,6 +50,11 @@
         color: $text-color-light;
         font-size: $nav-link-size;
         font-weight: 500;
+        border-radius: $border-radius-s;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: $font-family-primary;
+        font-weight: 600;
         letter-spacing: 0.5px;
         position: relative;
         padding: $spacing-xs 0;
