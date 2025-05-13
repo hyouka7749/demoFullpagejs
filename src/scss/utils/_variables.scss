@@ -1,16 +1,22 @@
 $font-family-primary: 'Montserrat', sans-serif;
+$shadow-button: 0 4px 12px rgba(0, 0, 0, 0.15);
+$shadow-button-hover: 0 6px 16px rgba(0, 0, 0, 0.2);
+$shadow-card-hero: 0 8px 32px rgba(0, 0, 0, 0.12);
+$bg-glass-hero-card: rgba(255, 255, 255, 0.12);
 
+$h3-font-size: 1.5rem;
 $color-white: #fff;
 $color-black: #000;
-$color-primary: #cc0000;
+$color-primary: #e53427;
 $color-accent: #ff0000;
 $color-success: #4CAF50;
 $color-success-dark: #45a049;
-
+$small-font-size: 0.875rem;
 $text-color-light: $color-white;
 $text-color-light-secondary: rgba($color-white, 0.9);
 $text-color-placeholder: rgba($color-white, 0.6);
-
+$text-color-secondary-dark: rgba($color-white, 0.8);
+$border-color-glass: rgba(255, 255, 255, 0.18);
 $bg-overlay-light: rgba($color-black, 0.2);
 $bg-overlay-light-hover: rgba($color-black, 0.25);
 $bg-overlay-medium: rgba($color-black, 0.4);
