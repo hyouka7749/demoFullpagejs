@@ -43,9 +43,7 @@
     animation-duration: 0.8s;
     animation-timing-function: ease;
     animation-fill-mode: forwards; 
-    mix-blend-mode: exclusion;
-
-    
+    mix-blend-mode: lighten;
   }
   
   .animate-text-delay {

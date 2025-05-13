@@ -30,6 +30,15 @@
         text-shadow: 0 0 10px rgba($color-primary, 0.5);
       }
     }
+    .hamburger-icon {
+    display: none; 
+    font-size: 1.8em;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;   
+    }
   
     nav {
       flex-grow: 1;

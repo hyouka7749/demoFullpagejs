@@ -7,13 +7,14 @@ html(lang="vi")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css")
     link(rel='stylesheet', href='css/main.css')
+
   body
     #loading
       .spinner
 
     header.header
-      .logo
-        span.logo-demo NATURE 
+      a.logo(href="#home")
+        span.logo-demo NATURE
         span.logo-front SHIELD
       nav
         ul
@@ -25,18 +26,18 @@ html(lang="vi")
             a.nav-link(href="#services") Dịch vụ
           li
             a.nav-link(href="#contact") Liên hệ
+      button.hamburger-icon(aria-label="Toggle menu", aria-expanded="false")
+        i.fas.fa-bars
 
     #fullpage
-      .section.hero
+      .section.hero(data-anchor="home")
         .hero-content
           h1.animate-text Wellcome to Nature Shield
           p.animate-text-delay Khám phá thiên nhiên - Bảo vệ môi trường
-          .scroll-hint
-            span Cuộn xuống để khám phá
-            i.fas.fa-chevron-down
-      .section#about-section
-      .section#services-section
-      .section#contact-section
+          
+      .section#about-section(data-anchor="about")
+      .section#services-section(data-anchor="services")
+      .section#contact-section(data-anchor="contact")
         .section-content-wrapper
           div.contact-content
             h2 Liên Hệ Với Chúng Tôi
@@ -83,7 +84,6 @@ html(lang="vi")
                   button(type="submit")
                     span Gửi Tin Nhắn
                     i.fas.fa-paper-plane
-
 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js")
     script.
@@ -142,8 +142,8 @@ html(lang="vi")
 
             if (mainContent) {
               target.innerHTML = mainContent.innerHTML;
-              
-              const scripts = mainContent.querySelectorAll("script:not([src*='youtube.com/iframe_api'])"); // Không thực thi lại script API youtube nếu có trong file con
+
+              const scripts = mainContent.querySelectorAll("script:not([src*='https://www.youtube.com/iframe_api'])");
               scripts.forEach(oldScript => {
                 const newScript = document.createElement("script");
                 Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
@@ -175,87 +175,135 @@ html(lang="vi")
           });
       }
 
-      new fullpage('#fullpage', {
-        autoScrolling: true,
-        scrollBar: false,
-        scrollHorizontally: true,
-        navigation: true,
-        anchors: ['home', 'about', 'services', 'contact'],
-        navigationTooltips: ['Trang chủ', 'Giới thiệu', 'Dịch vụ', 'Liên hệ'],
-        showActiveTooltip: true,
-        scrollOverflow: true,
-        fitToSection: true,
-        animateAnchor: true,
-        scrollingSpeed: 700,
-        licenseKey: 'YOUR_KEY_HERE',
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger-icon');
+        const navMenu = document.querySelector('.header nav ul');
+        const navLinks = navMenu.querySelectorAll('a');
 
-        afterRender: function(){
-          loadContent('about.html', 'about-section');
-          loadContent('services.html', 'services-section');
-        },
-
-        onLeave: function(origin, destination, direction) {
-          const navLinks = document.querySelectorAll('.nav-link');
-          navLinks.forEach(link => link.classList.remove('active'));
-          const activeLink = document.querySelector(`.nav-link[href="#${destination.anchor}"]`);
-          if (activeLink) {
-            activeLink.classList.add('active');
-          }
-
-          if (origin.anchor === 'about' && player && typeof player.pauseVideo === 'function') {
-            player.pauseVideo();
-            console.log('About video paused via onLeave (player from index.pug)');
-          }
-
-          const destinationSection = destination.item;
-          const textElements = destinationSection.querySelectorAll('.animate-text, .animate-text-delay');
-          if(textElements.length > 0){
-            textElements.forEach(el => {
-              el.style.opacity = '0';
-              el.style.transform = 'translateY(20px)';
-            });
-          }
-        },
-
-        afterLoad: function(origin, destination, direction) {
-          const currentSection = destination.item;
-          const animatedH1 = currentSection.querySelector('h1.animate-text');
-          const animatedP = currentSection.querySelector('p.animate-text-delay');
-          const otherAnimatedElements = currentSection.querySelectorAll('.animate-text:not(h1), .animate-text-delay:not(p)');
-
-          if (animatedH1) {
-            setTimeout(() => {
-              animatedH1.style.opacity = 1;
-              animatedH1.style.transform = 'translateY(0)';
-            }, 50);
-          }
-          if (animatedP) {
-            setTimeout(() => {
-              animatedP.style.opacity = 1;
-              animatedP.style.transform = 'translateY(0)';
-            }, 250);
-          }
-          
-          otherAnimatedElements.forEach((el, index) => {
-            setTimeout(() => {
-                el.style.opacity = 1;
-                el.style.transform = 'translateY(0)';
-            }, 250 + (index * 100));
+        if (hamburger && navMenu) {
+          hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            const isActive = navMenu.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isActive);
+            const icon = hamburger.querySelector('i');
+            if (icon) {
+              if (isActive) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+              } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+              }
+            }
           });
-        },
-        controlArrows: true,
-        controlArrowsHTML: [
-          '<div class="fp-arrow"></div>',
-          '<div class="fp-arrow"></div>'
-        ],
-        loopHorizontal: true
-      });
 
+          navLinks.forEach(link => {
+              link.addEventListener('click', () => {
+                  if (navMenu.classList.contains('active')) {
+                       navMenu.classList.remove('active');
+                       hamburger.setAttribute('aria-expanded', 'false');
+                       const icon = hamburger.querySelector('i');
+                       if (icon) {
+                           icon.classList.remove('fa-times');
+                           icon.classList.add('fa-bars');
+                       }
+                  }
+              });
+          });
+        }
+
+        new fullpage('#fullpage', {
+          autoScrolling: true,
+          scrollBar: false,
+          scrollHorizontally: true,
+          navigation: true,
+          anchors: ['home', 'about', 'services', 'contact'],
+          navigationTooltips: ['Trang chủ', 'Giới thiệu', 'Dịch vụ', 'Liên hệ'],
+          showActiveTooltip: true,
+          scrollOverflow: true,
+          fitToSection: true,
+          animateAnchor: true,
+          scrollingSpeed: 700,
+          licenseKey: 'YOUR_KEY_HERE', 
+
+          responsiveWidth: 768, 
+
+          afterRender: function(){
+            loadContent('about.html', 'about-section');
+            loadContent('services.html', 'services-section');
+            if (document.body.classList.contains('fp-responsive')) {
+              console.log("FullPage is in responsive mode");
+            }
+          },
+
+          onLeave: function(origin, destination, direction) {
+            const navLinksAll = document.querySelectorAll('.header nav ul a.nav-link');
+            navLinksAll.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.header nav ul a.nav-link[href="#${destination.anchor}"]`);
+            if (activeLink) {
+              activeLink.classList.add('active');
+            }
+
+            if (origin.anchor === 'about' && player && typeof player.pauseVideo === 'function') {
+              player.pauseVideo();
+              console.log('About video paused via onLeave (player from index.pug)');
+            }
+
+            const destinationSection = destination.item;
+            const textElements = destinationSection.querySelectorAll('.animate-text, .animate-text-delay');
+            if(textElements.length > 0){
+              textElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+              });
+            }
+          },
+
+          afterLoad: function(origin, destination, direction) {
+            const currentSection = destination.item;
+            const animatedH1 = currentSection.querySelector('h1.animate-text');
+            const animatedP = currentSection.querySelector('p.animate-text-delay');
+            const otherAnimatedElements = currentSection.querySelectorAll('.animate-text:not(h1), .animate-text-delay:not(p)');
+
+            if (animatedH1) {
+              setTimeout(() => {
+                animatedH1.style.opacity = 1;
+                animatedH1.style.transform = 'translateY(0)';
+              }, 50);
+            }
+            if (animatedP) {
+              setTimeout(() => {
+                animatedP.style.opacity = 1;
+                animatedP.style.transform = 'translateY(0)';
+              }, 250);
+            }
+
+            otherAnimatedElements.forEach((el, index) => {
+              setTimeout(() => {
+                  el.style.opacity = 1;
+                  el.style.transform = 'translateY(0)';
+              }, 250 + (index * 100));
+            });
+          },
+          controlArrows: true,
+          controlArrowsHTML: [
+            '<div class="fp-arrow"></div>',
+            '<div class="fp-arrow"></div>'
+          ],
+          loopHorizontal: true
+        });
+      }); // Kết thúc DOMContentLoaded
+
+      // Các hàm YouTube API (giữ nguyên)
       function onYouTubeIframeAPIReady() {
         console.log("YouTube API is ready (loaded globally from index.pug)");
         youtubeAPIReady = true;
         YT_API = YT;
-        initializePlayerForId('youtube-player'); 
+        // Thử khởi tạo player nếu #youtube-player đã tồn tại trong DOM ban đầu
+        // Thường thì nó sẽ được gọi sau khi loadContent('about.html', ...)
+        if (document.getElementById('youtube-player')) {
+            initializePlayerForId('youtube-player');
+        }
       }
 
       function onPlayerReady(event) {
@@ -292,11 +340,12 @@ html(lang="vi")
           player.mute();
         } else { console.error("Player not available or mute not a function."); }
       }
-      
+
       function unMuteVideo() {
         if (player && typeof player.unMute === 'function') {
           player.unMute();
         } else { console.error("Player not available or unMute not a function."); }
       }
+
 
     script(src="https://www.youtube.com/iframe_api")
