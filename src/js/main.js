@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
     scrollHorizontally: true,
     navigation: true,
     anchors: ['home', 'about', 'portfolio', 'services', 'contact'],
-    navigationTooltips: ['Trang chủ', 'Giới thiệu', 'Dự án', 'Dịch vụ', 'Liên hệ'],
+    // navigationTooltips: ['Trang chủ', 'Giới thiệu', 'Dự án', 'Dịch vụ', 'Liên hệ'],
     showActiveTooltip: true,
     scrollOverflow: true,
     fitToSection: true,
