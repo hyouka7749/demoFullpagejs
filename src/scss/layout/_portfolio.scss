@@ -18,6 +18,8 @@
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   transition: transform $transition-fast, box-shadow $transition-fast;
+  display: flex;
+  flex-direction: column;
 
   img {
     width: 100%;
@@ -28,7 +30,7 @@
   }
 
   h3 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     color: #f0f0f0;
     margin-bottom: 0.5rem;
     font-weight: 600;
@@ -38,6 +40,29 @@
     font-size: 0.875rem;
     color: #cccccc;
     line-height: 1.6;
+    max-height: 7.5rem;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-bottom: 0;
+    overscroll-behavior-y: contain; 
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
   }
 
   &:hover {

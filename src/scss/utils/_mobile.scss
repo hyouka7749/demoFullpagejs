@@ -1,38 +1,39 @@
 @media (max-width: 992px) {
   .header {
     padding: 15px 25px;
+    background-color: rgba(15, 15, 15, 0.95);
+
   }
-  
 
   .section {
     padding-top: 60px;
     padding-bottom: 60px;
   }
   .section h2 {
-     font-size: 2.8rem;
-   }
+    font-size: 2.8rem;
+  }
   .section p {
-     font-size: 1.1rem;
-     max-width: 700px;
-   }
+    font-size: 1.1rem;
+    max-width: 700px;
+  }
 
   .section:nth-child(2) .about-grid,
   .section:nth-child(3) .services-grid {
     gap: 30px;
   }
-   .section:nth-child(2) .about-item,
-   .section:nth-child(3) .service-item {
-     padding: 25px;
-   }
-    .section:nth-child(2) .about-item h3,
-    .section:nth-child(3) .service-item h3 {
-     font-size: 1.4rem;
-   }
-    .section:nth-child(2) .about-item p,
-    .section:nth-child(2) .about-item li,
-    .section:nth-child(3) .service-item p {
-      font-size: 1.05rem;
-    }
+  .section:nth-child(2) .about-item,
+  .section:nth-child(3) .service-item {
+    padding: 25px;
+  }
+  .section:nth-child(2) .about-item h3,
+  .section:nth-child(3) .service-item h3 {
+    font-size: 1.4rem;
+  }
+  .section:nth-child(2) .about-item p,
+  .section:nth-child(2) .about-item li,
+  .section:nth-child(3) .service-item p {
+    font-size: 1.05rem;
+  }
 
   .section:nth-child(4) .contact-content h2 {
     font-size: 2.4rem;
@@ -55,22 +56,24 @@
   }
   .section:nth-child(4) .contact-form .form-group input,
   .section:nth-child(4) .contact-form .form-group textarea {
-     padding: 12px 18px;
+    padding: 12px 18px;
   }
   .section:nth-child(4) .contact-form button {
-      padding: 12px 18px;
-   }
+    padding: 12px 18px;
+  }
 }
 
-
-
 @media (max-width: 767px) {
-
   body {
-     font-size: 15px;
-     line-height: 1.7;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden; 
   }
-  
+
+  html, body {
+    height: auto;
+    overflow-y: auto; 
+  }
 
   .header {
     padding: 12px 15px;
@@ -114,15 +117,15 @@
     font-size: 1rem;
     font-weight: 500;
   }
-   .header nav ul.active a::after {
-     display: none;
-   }
-    .header nav ul.active a:hover,
-    .header nav ul.active a.active {
-       background-color: rgba(255, 0, 0, 0.15);
-       color: #fff;
-       padding-left: 25px;
-    }
+  .header nav ul.active a::after {
+    display: none;
+  }
+  .header nav ul.active a:hover,
+  .header nav ul.active a.active {
+    background-color: rgba(255, 0, 0, 0.15);
+    color: #fff;
+    padding-left: 25px;
+  }
 
   .hamburger-icon {
     display: flex;
@@ -140,29 +143,31 @@
   .section {
     padding-top: 50px;
     padding-bottom: 50px;
-    min-height: auto;
+    min-height: auto; 
+    height: auto; 
   }
   .section.fp-section {
-     min-height: 80vh;
-   }
+    min-height: auto; 
+    height: auto; 
+  }
 
   .section > div {
-     padding: 40px 15px;
-   }
+    padding: 30px 15px; 
+  }
 
   .section h1 {
     font-size: 2.5rem;
-    padding: 10vh 15px;
+    padding: 3rem 15px; 
   }
   .section h2 {
     font-size: 2.1rem;
     margin-bottom: 15px;
   }
-   .section p {
-      font-size: 0.95rem;
-      line-height: 1.75;
-      margin-bottom: 18px;
-   }
+  .section p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
 
   .section:nth-child(2) .about-grid,
   .section:nth-child(3) .services-grid {
@@ -172,214 +177,212 @@
   }
   .section:nth-child(2) .about-item,
   .section:nth-child(3) .service-item {
-     padding: 20px;
-     border-radius: 12px;
+    padding: 20px;
+    border-radius: 12px;
   }
-   .section:nth-child(2) .about-item h3,
-   .section:nth-child(3) .service-item h3 {
-      font-size: 1.25rem;
-      margin-bottom: 15px;
-   }
-   .section:nth-child(2) .about-item p,
-   .section:nth-child(2) .about-item li,
-   .section:nth-child(3) .service-item p {
-      font-size: 0.95rem;
-   }
-   .section:nth-child(2) .about-item li {
-      padding-left: 20px;
-      margin-bottom: 8px;
-   }
-   .section:nth-child(2) .about-item li::before {
-       left: 2px;
-       top: 2px;
-   }
-
+  .section:nth-child(2) .about-item h3,
+  .section:nth-child(3) .service-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+  }
+  .section:nth-child(2) .about-item p,
+  .section:nth-child(2) .about-item li,
+  .section:nth-child(3) .service-item p {
+    font-size: 0.95rem;
+  }
+  .section:nth-child(2) .about-item li {
+    padding-left: 20px;
+    margin-bottom: 8px;
+  }
+  .section:nth-child(2) .about-item li::before {
+    left: 2px;
+    top: 2px;
+  }
 
   .section:nth-child(4) > div {
-      padding: 30px 15px 30px;
-   }
-    .section:nth-child(4) .contact-content {
-        margin-top: 0;
-    }
-    .section:nth-child(4) .contact-content h2 {
-      font-size: 1.9rem;
-      margin-bottom: 8px;
-    }
-    .section:nth-child(4) .contact-content .contact-subtitle {
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-    }
-    .section:nth-child(4) .contact-grid {
-       max-width: 100%;
-       padding: 0;
-       gap: 18px;
-    }
-    .section:nth-child(4) .contact-info,
-    .section:nth-child(4) .contact-form {
-       padding: 20px;
-       border-radius: 15px;
-    }
-    .section:nth-child(4) .contact-info {
-        gap: 18px;
-     }
-    .section:nth-child(4) .contact-info-item {
-        gap: 12px;
-     }
-    .section:nth-child(4) .contact-info-item i {
-       padding: 10px;
-       min-width: 40px;
-       height: 40px;
-       font-size: 1.2rem;
-    }
-    .section:nth-child(4) .contact-info-item div h3 {
-       font-size: 1rem;
-       margin-bottom: 3px;
-    }
-    .section:nth-child(4) .contact-info-item div p {
-       font-size: 0.88rem;
-    }
-     .section:nth-child(4) .contact-info .social-links {
-        margin-top: 5px;
-     }
-      .section:nth-child(4) .contact-info .social-links h3 {
-         font-size: 1rem;
-         margin-bottom: 8px;
-     }
-      .section:nth-child(4) .contact-info .social-links .social-icons {
-         gap: 12px;
-     }
-      .section:nth-child(4) .contact-info .social-links .social-icons a.social-icon i {
-         font-size: 1.1rem;
-     }
+    padding: 30px 15px 30px;
+  }
+  .section:nth-child(4) .contact-content {
+    margin-top: 0;
+  }
+  .section:nth-child(4) .contact-content h2 {
+    font-size: 1.9rem;
+    margin-bottom: 8px;
+  }
+  .section:nth-child(4) .contact-content .contact-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  .section:nth-child(4) .contact-grid {
+    max-width: 100%;
+    padding: 0;
+    gap: 18px;
+  }
+  .section:nth-child(4) .contact-info,
+  .section:nth-child(4) .contact-form {
+    padding: 20px;
+    border-radius: 15px;
+  }
+  .section:nth-child(4) .contact-info {
+    gap: 18px;
+  }
+  .section:nth-child(4) .contact-info-item {
+    gap: 12px;
+  }
+  .section:nth-child(4) .contact-info-item i {
+    padding: 10px;
+    min-width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  .section:nth-child(4) .contact-info-item div h3 {
+    font-size: 1rem;
+    margin-bottom: 3px;
+  }
+  .section:nth-child(4) .contact-info-item div p {
+    font-size: 0.88rem;
+  }
+  .section:nth-child(4) .contact-info .social-links {
+    margin-top: 5px;
+  }
+  .section:nth-child(4) .contact-info .social-links h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .section:nth-child(4) .contact-info .social-links .social-icons {
+    gap: 12px;
+  }
+  .section:nth-child(4) .contact-info .social-links .social-icons a.social-icon i {
+    font-size: 1.1rem;
+  }
 
-
-    .section:nth-child(4) .contact-form h3 {
-        font-size: 1.4rem;
-        margin-bottom: 18px;
-     }
-    .section:nth-child(4) .contact-form .form-row {
-      grid-template-columns: 1fr;
-      gap: 0;
-      margin-bottom: 0;
-    }
-    .section:nth-child(4) .contact-form .form-group {
-       margin-bottom: 18px;
-    }
-    .section:nth-child(4) .contact-form .form-group:last-of-type {
-       margin-bottom: 20px;
-    }
-    .section:nth-child(4) .contact-form .form-group label {
-        font-size: 0.85rem;
-        margin-bottom: 6px;
-    }
-    .section:nth-child(4) .contact-form .form-group input,
-    .section:nth-child(4) .contact-form .form-group textarea {
-       padding: 12px 15px;
-       font-size: 0.9rem;
-       border-radius: 10px;
-    }
-     .section:nth-child(4) .contact-form .form-group textarea {
-        min-height: 80px;
-     }
-     .section:nth-child(4) .contact-form button {
-       width: 100%;
-       padding: 14px 20px;
-       font-size: 0.9rem;
-       border-radius: 10px;
-       margin-top: 0;
-     }
-     .section:nth-child(4) .contact-form button i {
-        font-size: 0.95rem;
-     }
+  .section:nth-child(4) .contact-form h3 {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+  }
+  .section:nth-child(4) .contact-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 0;
+  }
+  .section:nth-child(4) .contact-form .form-group {
+    margin-bottom: 18px;
+  }
+  .section:nth-child(4) .contact-form .form-group:last-of-type {
+    margin-bottom: 20px;
+  }
+  .section:nth-child(4) .contact-form .form-group label {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+  .section:nth-child(4) .contact-form .form-group input,
+  .section:nth-child(4) .contact-form .form-group textarea {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+  .section:nth-child(4) .contact-form .form-group textarea {
+    min-height: 80px;
+  }
+  .section:nth-child(4) .contact-form button {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    margin-top: 0;
+  }
+  .section:nth-child(4) .contact-form button i {
+    font-size: 0.95rem;
+  }
 
   .scroll-hint {
-     padding: 8px;
-     bottom: 8px;
-   }
-   .scroll-hint span {
-      font-size: 0.75rem;
-      margin-bottom: 4px;
-   }
-   .scroll-hint i {
-      font-size: 0.9rem;
-   }
+    padding: 8px;
+    bottom: 8px;
+  }
+  .scroll-hint span {
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+  }
+  .scroll-hint i {
+    font-size: 0.9rem;
+  }
 
-   .footer {
-      padding: 10px 15px;
-      font-size: 0.8rem;
-   }
+  .footer {
+    padding: 10px 15px;
+    font-size: 0.8rem;
+  }
 }
-
 
 @media (max-width: 480px) {
   body {
-     font-size: 14px;
+    font-size: 14px;
   }
 
   .header {
-     padding: 10px 12px;
+    padding: 10px 12px;
   }
-   .hamburger-icon {
-      font-size: 1.5em;
-      padding: 6px;
-   }
-   .header nav ul.active a {
-      padding: 15px 18px;
-      font-size: 0.95rem;
-   }
+  .hamburger-icon {
+    font-size: 1.5em;
+    padding: 6px;
+  }
+  .header nav ul.active a {
+    padding: 15px 18px;
+    font-size: 0.95rem;
+  }
+  
+
 
   .section h1 {
     font-size: 2.1rem;
-    padding: 8vh 15px;
+    padding: 2.5rem 15px; 
   }
   .section h2 {
     font-size: 1.8rem;
   }
-   .section p {
-      font-size: 0.9rem;
-   }
+  .section p {
+    font-size: 0.9rem;
+  }
 
-   .section:nth-child(2) .about-item h3,
-   .section:nth-child(3) .service-item h3 {
-      font-size: 1.15rem;
-   }
-    .section:nth-child(2) .about-item p,
-    .section:nth-child(2) .about-item li,
-    .section:nth-child(3) .service-item p {
-      font-size: 0.9rem;
-    }
+  .section:nth-child(2) .about-item h3,
+  .section:nth-child(3) .service-item h3 {
+    font-size: 1.15rem;
+  }
+  .section:nth-child(2) .about-item p,
+  .section:nth-child(2) .about-item li,
+  .section:nth-child(3) .service-item p {
+    font-size: 0.9rem;
+  }
 
-
-   .section:nth-child(4) > div {
-      padding: 25px 15px 25px;
-   }
-    .section:nth-child(4) .contact-content h2 {
-      font-size: 1.7rem;
-    }
-     .section:nth-child(4) .contact-info,
-     .section:nth-child(4) .contact-form {
-       padding: 18px;
-       border-radius: 12px;
-    }
-    .section:nth-child(4) .contact-form h3 {
-        font-size: 1.3rem;
-        margin-bottom: 15px;
-     }
-    .section:nth-child(4) .contact-form .form-group {
-       margin-bottom: 15px;
-    }
-    .section:nth-child(4) .contact-form .form-group label {
-        font-size: 0.8rem;
-    }
-    .section:nth-child(4) .contact-form .form-group input,
-    .section:nth-child(4) .contact-form .form-group textarea {
-       padding: 10px 12px;
-       font-size: 0.85rem;
-       border-radius: 8px;
-    }
-     .section:nth-child(4) .contact-form button {
-       padding: 12px 15px;
-       font-size: 0.85rem;
-       border-radius: 8px;
-     }
+  .section:nth-child(4) > div {
+    padding: 25px 15px 25px;
+  }
+  .section:nth-child(4) .contact-content h2 {
+    font-size: 1.7rem;
+  }
+  .section:nth-child(4) .contact-info,
+  .section:nth-child(4) .contact-form {
+    padding: 18px;
+    border-radius: 12px;
+  }
+  .section:nth-child(4) .contact-form h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+  .section:nth-child(4) .contact-form .form-group {
+    margin-bottom: 15px;
+  }
+  .section:nth-child(4) .contact-form .form-group label {
+    font-size: 0.8rem;
+  }
+  .section:nth-child(4) .contact-form .form-group input,
+  .section:nth-child(4) .contact-form .form-group textarea {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
+  .section:nth-child(4) .contact-form button {
+    padding: 12px 15px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
 }

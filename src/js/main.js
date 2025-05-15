@@ -8,7 +8,7 @@ window.addEventListener('load', function() {
     loadingElement.style.opacity = '0';
     setTimeout(() => {
       loadingElement.style.display = 'none';
-    }, 500);
+    }, 100); 
   }
 });
 
@@ -37,7 +37,7 @@ function loadContent(url, targetId) {
     console.error(`Error: Target element with ID "${targetId}" not found.`);
     return Promise.reject(new Error(`Target element with ID "${targetId}" not found.`));
   }
-  target.style.opacity = '0';
+  target.style.opacity = '0'; 
 
   return fetch(url)
     .then(response => {
@@ -67,12 +67,11 @@ function loadContent(url, targetId) {
           initializePlayerForId('youtube-player');
         }
 
-        setTimeout(() => {
-          target.style.opacity = '1';
-          if (typeof fullpage_api !== 'undefined' && fullpage_api.reBuild) {
-            fullpage_api.reBuild();
-          }
-        }, 50);
+        // Hiển thị nội dung ngay lập tức
+        target.style.opacity = '1';
+        if (typeof fullpage_api !== 'undefined' && fullpage_api.reBuild) {
+          fullpage_api.reBuild();
+        }
       } else {
         console.error(`Error: Could not find <main> element in fetched content from ${url}`);
         target.innerHTML = '<p>Lỗi tải nội dung (không tìm thấy thẻ main).</p>';
@@ -130,22 +129,19 @@ document.addEventListener('DOMContentLoaded', function() {
     scrollHorizontally: true,
     navigation: true,
     anchors: ['home', 'about', 'portfolio', 'services', 'contact'],
-    // navigationTooltips: ['Trang chủ', 'Giới thiệu', 'Dự án', 'Dịch vụ', 'Liên hệ'],
     showActiveTooltip: true,
     scrollOverflow: true,
     fitToSection: true,
     animateAnchor: true,
     scrollingSpeed: 700,
-    licenseKey: 'YOUR_KEY_HERE',
+    licenseKey: 'YOUR_KEY_HERE', 
     responsiveWidth: 768,
 
     afterRender: function(){
       Promise.all([
-        
         loadContent('about.html', 'about-section'),
         loadContent('portfolio.html', 'portfolio-section'),
         loadContent('services.html', 'services-section'),
-        
       ]).then(() => {
         console.log('All dynamic sections loaded.');
         if (typeof fullpage_api !== 'undefined' && fullpage_api.reBuild) {
@@ -193,14 +189,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const animatedCards = currentSection.querySelectorAll('.hero-features-cards .feature-card');
         const heroCTA = currentSection.querySelector('.hero-main-content .hero-cta');
 
-        if (animatedH1) { setTimeout(() => { animatedH1.style.opacity = 1; animatedH1.style.transform = 'translateY(0)'; }, 50); }
-        if (animatedP) { setTimeout(() => { animatedP.style.opacity = 1; animatedP.style.transform = 'translateY(0)'; }, 200); }
-        if (heroCTA) { setTimeout(() => { heroCTA.style.opacity = 1; heroCTA.style.transform = 'translateY(0)'; }, 350); }
-        animatedCards.forEach((card, index) => {
-          setTimeout(() => {
-            card.style.opacity = 1;
-            card.style.transform = 'translateY(0)';
-          }, 200 + (index * 100));
+        if (animatedH1) { animatedH1.style.opacity = 1; animatedH1.style.transform = 'translateY(0)'; }
+        if (animatedP) { animatedP.style.opacity = 1; animatedP.style.transform = 'translateY(0)'; }
+        if (heroCTA) { heroCTA.style.opacity = 1; heroCTA.style.transform = 'translateY(0)'; }
+        animatedCards.forEach((card) => {
+          card.style.opacity = 1;
+          card.style.transform = 'translateY(0)';
         });
       }
 
@@ -209,37 +203,31 @@ document.addEventListener('DOMContentLoaded', function() {
         const portfolioSubtitle = currentSection.querySelector('.portfolio-content .portfolio-subtitle');
         const portfolioItems = currentSection.querySelectorAll('.portfolio-grid .portfolio-item');
 
-        if (portfolioTitle) { setTimeout(() => { portfolioTitle.style.opacity = 1; portfolioTitle.style.transform = 'translateY(0)'; }, 100); }
-        if (portfolioSubtitle) { setTimeout(() => { portfolioSubtitle.style.opacity = 1; portfolioSubtitle.style.transform = 'translateY(0)'; }, 200); }
-        portfolioItems.forEach((item, index) => {
-          setTimeout(() => {
-            item.style.opacity = 1;
-            item.style.transform = 'translateY(0)';
-          }, 300 + (index * 150));
+        if (portfolioTitle) { portfolioTitle.style.opacity = 1; portfolioTitle.style.transform = 'translateY(0)'; }
+        if (portfolioSubtitle) { portfolioSubtitle.style.opacity = 1; portfolioSubtitle.style.transform = 'translateY(0)'; }
+        portfolioItems.forEach((item) => {
+          item.style.opacity = 1;
+          item.style.transform = 'translateY(0)';
         });
       }
 
       if (destination.anchor === 'about') {
-        const aboutItems = currentSection.querySelectorAll('.about-item'); 
-        const aboutTitle = currentSection.querySelector('.about-content h2'); 
-         if (aboutTitle) { setTimeout(() => { aboutTitle.style.opacity = 1; aboutTitle.style.transform = 'translateY(0)'; }, 100); }
-        aboutItems.forEach((item, index) => {
-          setTimeout(() => {
-            item.style.opacity = 1;
-            item.style.transform = 'translateY(0)';
-          }, 200 + (index * 100));
+        const aboutItems = currentSection.querySelectorAll('.about-item');
+        const aboutTitle = currentSection.querySelector('.about-content h2');
+        if (aboutTitle) { aboutTitle.style.opacity = 1; aboutTitle.style.transform = 'translateY(0)'; }
+        aboutItems.forEach((item) => { 
+          item.style.opacity = 1;
+          item.style.transform = 'translateY(0)';
         });
       }
       
       if (destination.anchor === 'services') {
-        const serviceItems = currentSection.querySelectorAll('.service-item'); 
-        const servicesTitle = currentSection.querySelector('.services-content h2'); 
-        if (servicesTitle) { setTimeout(() => { servicesTitle.style.opacity = 1; servicesTitle.style.transform = 'translateY(0)'; }, 100); }
-        serviceItems.forEach((item, index) => {
-          setTimeout(() => {
-            item.style.opacity = 1;
-            item.style.transform = 'translateY(0)';
-          }, 200 + (index * 100));
+        const serviceItems = currentSection.querySelectorAll('.service-item');
+        const servicesTitle = currentSection.querySelector('.services-content h2');
+        if (servicesTitle) { servicesTitle.style.opacity = 1; servicesTitle.style.transform = 'translateY(0)'; }
+        serviceItems.forEach((item) => { 
+          item.style.opacity = 1;
+          item.style.transform = 'translateY(0)';
         });
       }
 
@@ -249,21 +237,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const contactInfo = currentSection.querySelector('.contact-info');
         const contactForm = currentSection.querySelector('.contact-form');
 
-        if (contactTitle) { setTimeout(() => { contactTitle.style.opacity = 1; contactTitle.style.transform = 'translateY(0)'; }, 100); }
-        if (contactSubtitle) { setTimeout(() => { contactSubtitle.style.opacity = 1; contactSubtitle.style.transform = 'translateY(0)'; }, 200); }
-        if (contactInfo) { setTimeout(() => { contactInfo.style.opacity = 1; contactInfo.style.transform = 'translateY(0)'; }, 300); }
-        if (contactForm) { setTimeout(() => { contactForm.style.opacity = 1; contactForm.style.transform = 'translateY(0)'; }, 400); }
+        if (contactTitle) { contactTitle.style.opacity = 1; contactTitle.style.transform = 'translateY(0)'; }
+        if (contactSubtitle) { contactSubtitle.style.opacity = 1; contactSubtitle.style.transform = 'translateY(0)'; }
+        if (contactInfo) { contactInfo.style.opacity = 1; contactInfo.style.transform = 'translateY(0)'; }
+        if (contactForm) { contactForm.style.opacity = 1; contactForm.style.transform = 'translateY(0)'; }
       }
 
       const otherAnimatedElements = currentSection.querySelectorAll(
         '.animate-text:not(.hero-main-content h1):not(.portfolio-content h2):not(.about-content h2):not(.services-content h2):not(.contact-content h2),' +
         '.animate-text-delay:not(.hero-main-content p):not(.portfolio-content .portfolio-subtitle):not(.contact-content .contact-subtitle)'
       );
-      otherAnimatedElements.forEach((el, index) => {
-        setTimeout(() => {
-          el.style.opacity = 1;
-          el.style.transform = 'translateY(0)';
-        }, 250 + (index * 100));
+      otherAnimatedElements.forEach((el) => {
+        el.style.opacity = 1;
+        el.style.transform = 'translateY(0)';
       });
     },
     controlArrows: true,
