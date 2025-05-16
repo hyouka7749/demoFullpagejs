@@ -30,16 +30,19 @@
         text-shadow: 0 0 10px rgba($color-primary, 0.5);
       }
     }
-    .hamburger-icon {
-    display: none; 
-    font-size: 1.8em;
-    color: #fff;
+    
+  .hamburger-icon {
+
+    display: flex;
+    font-size: 1.8rem; 
+    color: $color-white; 
     background: none;
     border: none;
-    cursor: pointer;
-    padding: 5px;   
-    }
-  
+    cursor: help;
+    padding: $spacing-xs; 
+    z-index: $z-index-header-footer + 1; 
+    margin-left: $spacing-m;
+  }
     nav {
       flex-grow: 1;
       display: flex;
@@ -50,6 +53,7 @@
         gap: $spacing-xxxl;
         flex-wrap: nowrap; 
       }
+      
   
       li {
         white-space: nowrap; 

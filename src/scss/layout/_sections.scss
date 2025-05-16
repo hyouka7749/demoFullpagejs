@@ -23,6 +23,22 @@
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
+  .right-text {
+    text-align: right;
+    
+  }
+  .slide-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover; 
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border-radius: 5%;
+  padding: 5px;
+  width: 800px;
+  line-height:24px;
+  }
   &::before {
     content: '';
     position: absolute;
@@ -53,22 +69,34 @@
     text-shadow: $shadow-text-medium;
     letter-spacing: 1px;
   }
+  
   h1 {  
-    mix-blend-mode: lighten;
+    mix-blend-mode: color-dodge;
     font-family: Candara;
-    font-size: 5rem;
-    text-align: center;
+    font-size: 80px;
+    line-height:128px;
     margin: 0; 
-    padding: 20vh 200px;
-    color: rgb(255, 255, 255);
+    padding-bottom: 50px;
+    padding-top: 100px;
+    padding-left: 200px;
+    padding-right: 200px;
+    text-align: center;
   }
 
 
-  p {
+
+  p {  
+    font-weight: 500;
+    line-height: 1.5;
     font-size: $section-paragraph-size;
     max-width: 800px;
     margin: 0 auto $spacing-l;
     text-shadow: $shadow-text-light;
+    line-break: auto;
+    text-align: justify;
+  }
+  .hero-title { 
+  text-align: left;
   }
 
   &.active > div {
@@ -129,6 +157,7 @@
         line-height: 1.8;
         font-size: $item-text-size;
       }
+      
 
       
 
@@ -148,6 +177,7 @@
       }
     }
   }
+  
 
   &:nth-child(3) {
     background: url('https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg') no-repeat center center/cover;

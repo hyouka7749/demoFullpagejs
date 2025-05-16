@@ -1,11 +1,13 @@
 .video-responsive-wrapper {
   position: relative;
   padding-bottom: 30%;
-  height: 0;
+  
   overflow: hidden;
+  
   width: 100%; 
-  max-width: 800px; 
-  background: #000;
+  max-width: 800px;
+ 
+
   margin-left: auto;
   margin-right: auto; 
   margin-bottom: 20px;
@@ -26,6 +28,20 @@
 }
 
 @media (max-width: 480px) {
+  .video-responsive-wrapper {
+    padding-bottom: 56.25%; 
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+}
+@media (max-width: 992px) {
+  .video-responsive-wrapper {
+    padding-bottom: 56.25%; 
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+}
+@media (max-width: 797px) {
   .video-responsive-wrapper {
     padding-bottom: 56.25%; 
     margin-bottom: 15px;

@@ -1,16 +1,28 @@
 main
   .about-content-wrapper(style="padding: 20px;")
     h2.animate-text Về Chúng Tôi
-    p.subtitle.animate-text-delay Video giới thiệu về tổ chức của chúng tôi
+  .slide(data-anchor="slide1-video")
+    .slide-content-wrapper
+      .video-responsive-wrapper
+        iframe#youtube-player(
+          class='video-intro',
+          src='https://www.youtube.com/embed/pJxeyK7it0o?autoplay=1', 
+          title='Video giới thiệu YouTube',
+          frameborder='0',
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
+          referrerpolicy='strict-origin-when-cross-origin',
+          allowfullscreen
+        )
 
-    .video-responsive-wrapper
-      iframe#youtube-player(
-        class='video-intro',
-        src='https://www.youtube.com/embed/pJxeyK7it0o?autoplay=1', 
-        title='Video giới thiệu YouTube',
-        frameborder='0',
-        allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
-        referrerpolicy='strict-origin-when-cross-origin',
-        allowfullscreen
-      )
-
+  .slide(data-anchor="slide1-video")
+    .slide-content-wrapper
+      .video-responsive-wrapper
+        iframe#youtube-player(
+          class='video-intro',
+          src='https://www.youtube.com/embed/2OdYv8YKSaI', 
+          title='Video giới thiệu YouTube',
+          frameborder='0',
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
+          referrerpolicy='strict-origin-when-cross-origin',
+          allowfullscreen
+        )

@@ -1,9 +1,18 @@
+
 @media (max-width: 992px) {
   .header {
     padding: 15px 25px;
-    background-color: rgba(15, 15, 15, 0.95);
-
   }
+  .hamburger-icon {
+   display: block; 
+    font-size: 1.8em;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;   
+    }
+
 
   .section {
     padding-top: 60px;
