@@ -75,6 +75,19 @@ function setupImageClickListeners(sectionElement) {
   });
 }
 
+function setupGalleryImageClickListeners(sectionElement) {
+  const imagesToLightbox = sectionElement.querySelectorAll('img');
+  imagesToLightbox.forEach(img => {
+    if (img.closest('.lightbox-ignore')) return;
+    const newImg = img.cloneNode(true);
+    img.parentNode.replaceChild(newImg, img);
+    newImg.style.cursor = 'pointer';
+    newImg.addEventListener('click', function() {
+      openLightbox(this.src, this.alt);
+    });
+  });
+}
+
 function loadContent(url, targetId) {
   const target = document.getElementById(targetId);
   if (!target) {
@@ -109,6 +122,9 @@ function loadContent(url, targetId) {
         }
         if (targetId === 'portfolio-section') {
           setupImageClickListeners(target);
+        }
+        if (targetId === 'gallary-section') {
+          setupGalleryImageClickListeners(target);
         }
         
         target.style.opacity = '1';
@@ -159,10 +175,6 @@ document.addEventListener('DOMContentLoaded', function() {
     autoScrolling: true,
     scrollBar: false,
     scrollHorizontally: true,
-    // navigation: true,
-    // anchors: ['home', 'about', 'portfolio', 'services', 'contact'],
-    // navigationTooltips: ['Trang chủ', 'Giới thiệu', 'Dự án', 'Dịch vụ', 'Liên hệ'],
-    // showActiveTooltip: true,
     scrollOverflow: true,
     fitToSection: true,
     animateAnchor: true,
@@ -171,11 +183,13 @@ document.addEventListener('DOMContentLoaded', function() {
     responsiveWidth: 768,
 
     afterRender: function(){
+      
       Promise.all([
         
         loadContent('about.html', 'about-section'),
         loadContent('portfolio.html', 'portfolio-section'),
         loadContent('services.html', 'services-section'),
+        loadContent('gallary.html', 'gallary-section'),
         
       ]).then(() => {
         if (typeof fullpage_api !== 'undefined' && fullpage_api.reBuild) {
@@ -183,6 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }).catch(error => console.error('One or more sections failed to load:', error));
     },
+    
 
     onLeave: function(origin, destination, direction) {
       const navLinksAll = document.querySelectorAll('.header nav ul a.nav-link');
@@ -230,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
       if (destination.anchor === 'home') {
-        const currentSlideElement = destination.item.querySelector('.fp-slide.active'); // fullPage.js thêm class .active vào slide hiện tại
+        const currentSlideElement = destination.item.querySelector('.fp-slide.active'); 
         if (currentSlideElement) {
             const slideH1 = currentSlideElement.querySelector('.hero-main-content h1.animate-text, .slide-content-wrapper h2.animate-text');
             const slideP = currentSlideElement.querySelector('.hero-main-content p.animate-text-delay, .slide-content-wrapper p.animate-text-delay');
@@ -304,4 +319,3 @@ function pauseVideo() { if (player && typeof player.pauseVideo === 'function') p
 function stopVideo() { if (player && typeof player.stopVideo === 'function') player.stopVideo(); }
 function muteVideo() { if (player && typeof player.mute === 'function') player.mute(); }
 function unMuteVideo() { if (player && typeof player.unMute === 'function') player.unMute(); }
-
