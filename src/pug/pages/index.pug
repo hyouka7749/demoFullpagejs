@@ -7,28 +7,32 @@ html(lang="vi")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css")
     link(rel='stylesheet', href='css/main.css')
+    link(rel="icon", type="image/x-icon",sizes="32x32", href="/assets/images/pen.ico")
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Honk&display=swap", rel="stylesheet")
   body
     #loading
       .spinner
 
     header.header
-      a.logo(href="#home")
+      a.logo.agu-display(href="#home")
         span.logo-demo NATURE
         span.logo-front SHIELD
       nav
         ul
           li
-            a.nav-link.active(href="#home") Trang chủ
+            a.agu-display.nav-link.active(href="#home") Trang chủ
           li
-            a.nav-link(href="#about") Giới thiệu
+            a.agu-display.nav-link(href="#about") Giới thiệu
           li
-            a.nav-link(href="#portfolio") Dự án
+            a.agu-display.nav-link(href="#portfolio") Dự án
           li
-            a.nav-link(href="#services") Dịch vụ
+            a.agu-display.nav-link(href="#services") Dịch vụ
           li 
-            a.nav-link(href="#gallary") Thư viện
+            a.agu-display.nav-link(href="#gallary") Thư viện
           li
-            a.nav-link(href="#contact") Liên hệ
+            a.agu-display.nav-link(href="#contact") Liên hệ
       button.hamburger-icon(aria-label="Toggle menu", aria-expanded="false")
         i.fas.fa-bars
 
@@ -38,7 +42,9 @@ html(lang="vi")
           .slide(data-anchor="slide1-chinh")
             .hero-main-content
               h1.animate-text Welcome to Nature Shield
-              
+              a.button-link(href="/pages01/index.html") Go to Google phake Page
+              p.animate-text.center-text Link button 
+              a.button-link(href="/pages02/list.html") Go to List Page 
           .slide(data-anchor="slide2-tam-nhin")
             .slide-content-wrapper
               h1.animate-text.right-text Tầm Nhìn Xa Hơn

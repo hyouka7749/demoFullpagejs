@@ -1,0 +1,30 @@
+doctype html
+html(lang="vi")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title GOOGLE PHAKE
+    link(rel="stylesheet", href='/css/gg.css')
+    link(rel="icon", type="image/x-icon",sizes="32x32", href="/assets/images/coffee.ico")
+  body
+    video#myVideo(autoplay, muted, loop)
+      source(src="/assets/videos/ggbr.mp4", type="video/mp4")
+
+
+    .main-container
+      .logo
+        img(src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png", alt="Google Logo")
+      
+      form(action="https://www.google.com/search", method="GET")
+        .input-container
+          input.input(name="q", type="text", placeholder="Search the internet...", aria-label="Tìm kiếm")
+
+        .buttons
+          input(type="submit", value="Tìm với Google")
+          button(type="button") Xem trang đầu tiên tìm được
+          
+      .links
+        | Google có các thứ tiếng:
+        a(href="#") English
+        a(href="#") Tiếng Việt
+        a(href="#") Tiếng Tàu

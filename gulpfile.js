@@ -1,20 +1,23 @@
 const gulp = require('gulp');
 const pug = require('gulp-pug');
-const sass = require('gulp-sass')(require('sass')); 
+const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
-const plumber = require('gulp-plumber'); 
-
+const plumber = require('gulp-plumber');
 
 const paths = {
   pug: {
-    src: 'src/pug/pages/**/*.pug', 
-    watch: 'src/pug/**/*.pug',    
+    src: 'src/pug/pages/**/*.pug',
+    watch: 'src/pug/**/*.pug',
     dest: 'dist/'
   },
   scss: {
-    src: 'src/scss/main.scss',    
-    watch: 'src/scss/**/*.scss',  
+    src: [
+      'src/scss/main.scss',
+      'src/scss/gg.scss',
+      'src/scss/list.scss'
+    ],
+    watch: 'src/scss/**/*.scss',
     dest: 'dist/css/'
   },
   js: {
@@ -25,38 +28,44 @@ const paths = {
   assets: {
     src: 'src/assets/**/*',
     watch: 'src/assets/**/*',
-    dest: 'dist/' 
-  },
-  clean: 'dist/'
+    dest: 'dist/'
+  }
 };
 
-async function clean() { 
-    const { deleteAsync } = await import('del'); 
-    return deleteAsync([paths.clean]); 
-  }
+async function clean() {
+  const { deleteAsync } = await import('del');
+  const pugDest = paths.pug.dest;
+  const scssDest = paths.scss.dest;
+  const jsDest = paths.js.dest;
 
+  const itemsToDelete = [
+    `${pugDest}*.html`,
+    scssDest,
+    jsDest
+  ];
+  return deleteAsync(itemsToDelete);
+}
 
 function compilePug() {
   return gulp.src(paths.pug.src)
     .pipe(plumber())
-    .pipe(pug({ pretty: true })) 
+    .pipe(pug({ pretty: true }))
     .pipe(gulp.dest(paths.pug.dest))
-    .pipe(browserSync.stream()); 
+    .pipe(browserSync.stream());
 }
 
+async function compileScss() {
+  const autoprefixer = (await import('gulp-autoprefixer')).default;
 
-async function compileScss() { 
-    const autoprefixer = (await import('gulp-autoprefixer')).default; 
-
-    return gulp.src(paths.scss.src)
-      .pipe(plumber())
-      .pipe(sourcemaps.init())
-      .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
-      .pipe(autoprefixer({ cascade: false })) 
-      .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(paths.scss.dest))
-      .pipe(browserSync.stream());
-  }
+  return gulp.src(paths.scss.src)
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
+    .pipe(autoprefixer({ cascade: false }))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.scss.dest))
+    .pipe(browserSync.stream());
+}
 
 function copyJs() {
   return gulp.src(paths.js.src)
@@ -71,14 +80,13 @@ function copyAssets() {
     .pipe(browserSync.stream());
 }
 
-
 function serve() {
   browserSync.init({
     server: {
-      baseDir: './dist/' 
+      baseDir: './dist/'
     },
     port: 3000,
-    notify: false 
+    notify: false
   });
 
   gulp.watch(paths.pug.watch, compilePug);
@@ -88,9 +96,7 @@ function serve() {
 }
 
 const build = gulp.series(clean, gulp.parallel(compilePug, compileScss, copyJs, copyAssets));
-
 const dev = gulp.series(build, serve);
-
 
 exports.clean = clean;
 exports.pug = compilePug;
@@ -98,5 +104,5 @@ exports.scss = compileScss;
 exports.js = copyJs;
 exports.assets = copyAssets;
 exports.build = build;
-exports.serve = dev; 
-exports.default = dev; 
+exports.serve = dev;
+exports.default = dev;
