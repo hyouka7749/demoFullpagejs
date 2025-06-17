@@ -2,6 +2,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    
     width: 100%;
     padding: $header-padding-y 0;
     z-index: $z-index-header-footer;
@@ -11,8 +12,14 @@
     justify-content: space-between;
     padding-left: $header-padding-x;
     padding-right: $header-padding-x;
-  
+    
+    
+    .fa-solid {
+      font-size: 1.8rem;
+      
+    }
     .logo {
+      font-family: 'Concert One', Courier, monospace;
       font-size: $logo-size;
       font-weight: 700;
       letter-spacing: 2px;
@@ -31,16 +38,16 @@
     }
     
   .hamburger-icon {
-
+    margin-left: 50px;
     display: flex;
     font-size: 1.8rem; 
     color: $color-white; 
     background: none;
     border: none;
-    cursor: help;
+    cursor: grab;
     padding: $spacing-xs; 
     z-index: $z-index-header-footer + 1; 
-    margin-left: $spacing-m;
+    
   }
     nav {
       flex-grow: 1;
@@ -52,6 +59,7 @@
         gap: $spacing-xxxl;
         flex-wrap: nowrap; 
       }
+      
       
   
       li {
@@ -69,6 +77,8 @@
         letter-spacing: 0.5px;
         position: relative;
         padding: $spacing-xs 0;
+        
+       
   
         &::after {
           content: '';

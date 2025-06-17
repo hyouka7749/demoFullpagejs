@@ -39,20 +39,19 @@ body {
   @include gradient(to right, $primary, $secondary);
   @include font-stack();
 }
-
+  
 .heading {
   color: rgb(255, 255, 255);
   text-align: center;
 
   h1 {
-    font-family: 'Mitr';
+    font-family: 'Bungee Spice';
     font-size: 2rem;
     font-weight: 200;
     margin-bottom: 3rem;
-    font-weight: 300;
+    
     position: relative;
     margin-top: auto;
-    margin-bottom: 20px;
 
 
     &:after {
@@ -120,41 +119,7 @@ body {
       }
     }
   }
-  .mitr-extralight {
-  font-family: "Mitr", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-}
 
-.mitr-light {
-  font-family: "Mitr", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.mitr-regular {
-  font-family: "Mitr", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.mitr-medium {
-  font-family: "Mitr", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.mitr-semibold {
-  font-family: "Mitr", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.mitr-bold {
-  font-family: "Mitr", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
 
   .list {
     .num {

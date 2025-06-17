@@ -26,6 +26,12 @@
   will-change: opacity;
   transition: $transition-medium;
 
+    .fa-brands{
+      font-size: 2rem;
+    }
+    .fa-solid{
+      font-size: 2.2rem;
+    }
   .animate-text, .feature-card, .portfolio-item, .contact-info {
     opacity: 0;
     transform: translateY(20px);
@@ -92,8 +98,8 @@
   
   h1 {  
     mix-blend-mode: color-dodge;
-    font-family: Candara;
-    font-size: 80px;
+    font-family: $font-heading;
+    font-size: 60px;
     line-height:128px;
     margin: 0; 
     padding-bottom: 50px;
@@ -209,6 +215,7 @@
 
 background: url('https://images.pexels.com/photos/28304438/pexels-photo-28304438/free-photo-of-a-vineyard-with-a-view-of-the-countryside.jpeg') no-repeat center center/cover;
   h2 {
+    font-family: $font-heading2 ;
     color: $text-color-light;
     text-align: center;
     margin-bottom: $spacing-xxxl;
@@ -477,6 +484,7 @@ background: url('https://images.pexels.com/photos/28304438/pexels-photo-28304438
       padding: 0;
 
       h2 {
+        font-family: $font-heading2 ;
         font-size: 1.8rem;
         color: $text-color-light;
         margin-bottom: $spacing-xs;
