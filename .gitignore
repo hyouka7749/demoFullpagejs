@@ -2,7 +2,7 @@
 node_modules/
 
 # Build output folder
-dist/
+
 
 # Log files
 npm-debug.log*
