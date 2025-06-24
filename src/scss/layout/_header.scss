@@ -2,7 +2,6 @@
     position: fixed;
     top: 0;
     left: 0;
-    
     width: 100%;
     padding: $header-padding-y 0;
     z-index: $z-index-header-footer;
@@ -47,7 +46,6 @@
     cursor: grab;
     padding: $spacing-xs; 
     z-index: $z-index-header-footer + 1; 
-    
   }
     nav {
       flex-grow: 1;

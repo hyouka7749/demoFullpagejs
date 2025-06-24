@@ -470,7 +470,7 @@ a, button, input, textarea {
 .section h1 {
   mix-blend-mode: color-dodge;
   font-family: "Playpen Sans Deva", sans-serif;
-  font-size: 60px;
+  font-size: 50px;
   line-height: 128px;
   margin: 0;
   padding-bottom: 50px;
@@ -1551,6 +1551,12 @@ a, button, input, textarea {
 @media (max-width: 480px) {
   body {
     font-size: 14px;
+  }
+  .fa-brands {
+    font-size: 1rem;
+  }
+  .fa-solid {
+    font-size: 1rem;
   }
   .header {
     padding: 10px 12px;

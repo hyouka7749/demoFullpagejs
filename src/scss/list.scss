@@ -28,7 +28,15 @@
 // Variables
 $primary: #2980b9;
 $secondary: #2c3e50;
+$font-heading: 'Fuzzy Bubbles', sans-serif;
 
+@font-face {
+  font-family: 'Fuzzy Bubbles'; 
+  src: url('/assets/fonts/FuzzyBubbles-Regular.ttf') format('truetype');
+  font-weight: 400; 
+  font-style: normal; 
+  font-display: swap; 
+}
 html {
   @include flex(center, center);
   min-height: 100vh;
@@ -41,39 +49,46 @@ body {
 }
   
 .heading {
-  color: rgb(255, 255, 255);
   text-align: center;
 
   h1 {
-    font-family: 'Bungee Spice';
+    display: flex; 
+    align-items: center;
+    font-family: $font-heading;
     font-size: 2rem;
-    font-weight: 200;
     margin-bottom: 3rem;
-    
     position: relative;
     margin-top: auto;
-
-
-    &:after {
-      content: '';
-      height: 2px;
-      width: 2rem;
-      position: absolute;
-      left: 50%;
-      bottom: -1rem;
-      transform: translateX(-50%);
-      background-color: white;
-    }
   }
 }
-
+$icon-primary-color: #0fdf39;
+$icon-hover-color: #9e35e0;
 .container {
   background-color:rgba(7, 145, 138, 0.5);
   padding: 2rem;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   position: relative;
-
+  .icon-color{
+      fill: $icon-primary-color;
+      transition: 0.3 ease;
+    &:hover {
+      fill: $icon-hover-color;
+    }
+  }.icon-color1{
+      fill: #f2f0f0;
+      transition: 0.3 ease;
+    &:hover {
+      fill: #1abc33;
+    }
+  }
+  .icon-colorh1{
+      fill: #dd0b0b;
+      transition: 0.3 ease;
+    &:hover {
+      fill: #1abc33;
+    }
+  }
   .nav {
     background-color: #fafafa;
     @include flex(center, center);
@@ -130,7 +145,7 @@ body {
       @for $i from 1 through 10 {
         &:nth-child(#{$i}) {
           &:before {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: $font-heading;
             content: '#{$i}';
             font-size: 4rem;
             font-weight: bold;
@@ -149,7 +164,7 @@ body {
         color: #e8ddf0;
         font-size: 1.5rem;
         transition: 0.25s;
-        font-family: 'Courier New', Courier, monospace;
+        font-family: $font-heading;
       }
 
       &:hover {

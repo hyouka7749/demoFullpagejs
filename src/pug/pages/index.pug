@@ -12,8 +12,7 @@ html(lang="vi")
     link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
     link(href="https://fonts.googleapis.com/css2?family=Agu+Display&family=Honk&display=swap", rel="stylesheet")
   body
-    #loading
-      .spinner
+    
     header.header
       a.logo(href="#home")
         span.logo-demo NATURE
@@ -21,45 +20,34 @@ html(lang="vi")
       nav
         ul
           li
-            a.fa-solid.fa-house.nav-link.active(href="#home") 
+            a.fa-solid.fa-house.nav-link.active(href="#home")
+              
           li
             a.fa-solid.fa-magnifying-glass.nav-link(href="#about")
+              
           li
             a.fa-solid.fa-hand-holding-heart.nav-link(href="#portfolio")
+              
           li
-            a.fa-solid.fa-gear.nav-link(href="#services") 
-          li 
-            a.fa-solid.fa-images.nav-link(href="#gallary") 
+            a.fa-solid.fa-gear.nav-link(href="#services")
+              
           li
-            a.fa-solid.fa-paper-plane.nav-link(href="#contact")
+            a.fa-solid.fa-images.nav-link(href="#gallary")
+             
+          li
+            a.fa-solid.fa-phone.nav-link(href="#contact")
+              
       button.hamburger-icon(aria-label="Toggle menu", aria-expanded="false")
         i.fas.fa-bars
 
     #fullpage
       .section.hero(data-anchor="home")
         .hero-content#hero-section-content
-          .slide(data-anchor="slide1-chinh")
-            .hero-main-content
-              h1.animate-text Welcome to Nature Shield
-              a.fa-brands.fa-google(href="/pages01/index.html") 
-              br
-              br
-              a.fa-solid.fa-list-ol(href="/pages02/list.html")
-              
-          .slide(data-anchor="slide2-tam-nhin")
-            .slide-content-wrapper
-              h1.animate-text.right-text Tầm Nhìn Xa Hơn
-              p.animate-text-delay Nature Shield không chỉ dừng lại ở các hoạt động hiện tại mà còn hướng tới những giải pháp bền vững, ứng dụng công nghệ tiên tiến và mở rộng hợp tác quốc tế để nhân rộng mô hình bảo tồn hiệu quả.
-              img.slide-image.animate-text-delay(src="https://images.pexels.com/photos/29352966/pexels-photo-29352966/free-photo-of-c-nh-d-p-c-a-b-n-c-ng-lang-ven-bi-n-y.jpeg", alt="Tầm nhìn xa hơn")
-              p.animate-text-delay Nature Shield không chỉ dừng lại ở các hoạt động hiện tại mà còn hướng tới những giải pháp bền vững, ứng dụng công nghệ tiên tiến và mở rộng hợp tác quốc tế để nhân rộng mô hình bảo tồn hiệu quả.
-
-              img.slide-image.animate-text-delay(src="https://images.pexels.com/photos/459203/pexels-photo-459203.jpeg", alt="Tầm nhìn xa hơn")
-          .slide(data-anchor="slide3-keu-goi")
-            .slide-content-wrapper
-              h1.animate-text Chung Tay Vì Hành Tinh Xanh!
-              p.animate-text-delay Mỗi đóng góp, dù nhỏ bé, đều tạo nên sức mạnh to lớn. Hãy cùng Nature Shield lan tỏa tình yêu và trách nhiệm với thiên nhiên, kiến tạo một tương lai bền vững cho tất cả.
-              a.button.hero-cta.animate-text-delay(href="#contact") Tham Gia Cùng Chúng Tôi
-  
+          .hero-main-content   
+            h1.animate-text Welcome to Nature Shield
+            a.fa-brands.fa-google(href="/pages01/index.html")
+            a.fa-solid.fa-list-ol(href="/pages02/list.html")
+            a.fa-solid.fa-list-ol(href="/pages03/icon.html")
       .section#about-section(data-anchor="about")
       .section#portfolio-section(data-anchor="portfolio")
       .section#services-section(data-anchor="services")
@@ -121,7 +109,7 @@ html(lang="vi")
             i.fab.fa-google
           a.social-icon(href="#", aria-label="LinkedIn")
             i.fab.fa-linkedin-in
-            
+
     #image-lightbox.lightbox
       span.lightbox-close ×
       img.lightbox-content#lightbox-img(src="#", alt="Hình ảnh phóng to")
