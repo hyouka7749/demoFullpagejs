@@ -7,7 +7,7 @@ html(lang="vi")
     link(rel="stylesheet", href='/css/gg.css')
     link(rel="icon", type="image/x-icon",sizes="32x32", href="/assets/images/coffee.ico")
   body
-    video#myVideo(control poster="/assets/images/b3.jpg", preload="none", autoplay, muted, loop)
+    video#myVideo(control poster="/assets/images/b3.jpg", preload="auto", muted, loop) 
       source(src="/assets/videos/ggbr.mp4", type="video/mp4")
 
     .main-container
@@ -27,3 +27,16 @@ html(lang="vi")
         a(href="#") English
         a(href="#") Tiếng Việt
         a(href="#") Tiếng Tàu
+
+    script.
+      document.addEventListener('DOMContentLoaded', function() {
+        const logo = document.querySelector('.logo img');
+        const video = document.getElementById('myVideo');
+        if (logo.complete) {
+          video.play();
+        } else {
+          logo.addEventListener('load', () => {
+            video.play();
+          });
+        }
+      });

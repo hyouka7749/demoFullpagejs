@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" sizes="32x32" href="/assets/images/coffee.ico">
   </head>
   <body>
-    <video id="myVideo" control poster="/assets/images/b3.jpg" preload="none" autoplay muted loop>
+    <video id="myVideo" control poster="/assets/images/b3.jpg" preload="auto" muted loop> 
       <source src="/assets/videos/ggbr.mp4" type="video/mp4">
     </video>
     <div class="main-container">
@@ -24,5 +24,18 @@
       </form>
       <div class="links">Google có các thứ tiếng:<a href="#">English</a><a href="#">Tiếng Việt</a><a href="#">Tiếng Tàu</a></div>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const logo = document.querySelector('.logo img');
+        const video = document.getElementById('myVideo');
+        if (logo.complete) {
+          video.play();
+        } else {
+          logo.addEventListener('load', () => {
+            video.play();
+          });
+        }
+      });
+    </script>
   </body>
 </html>
