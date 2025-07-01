@@ -28,11 +28,24 @@
       document.addEventListener('DOMContentLoaded', function() {
         const logo = document.querySelector('.logo img');
         const video = document.getElementById('myVideo');
+      
+        const playVideo = () => {
+          if (video) {
+            video.play()
+              .catch(error => {
+                console.warn('Video autoplay prevented or failed:', error);
+              });
+          } else {
+            console.error('Video not found.');
+          }
+        };
+        
         if (logo.complete) {
-          video.play();
+          playVideo();
         } else {
-          logo.addEventListener('load', () => {
-            video.play();
+          logo.addEventListener('load', playVideo);
+          logo.addEventListener('error', () => {
+            console.error('Logo failed to load');
           });
         }
       });

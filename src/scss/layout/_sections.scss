@@ -203,70 +203,9 @@
   &:nth-child(3) {
     background: url('https://images.pexels.com/photos/247599/pexels-photo-247599.jpeg') no-repeat center center/cover;
   }
+
+
 &:nth-child(4) {
-
-background: url('https://images.pexels.com/photos/28304438/pexels-photo-28304438/free-photo-of-a-vineyard-with-a-view-of-the-countryside.jpeg') no-repeat center center/cover;
-  h2 {
-    font-family: $font-heading2 ;
-    color: $text-color-light;
-    text-align: center;
-    margin-bottom: $spacing-xxxl;
-    font-size: 2.8rem;
-    font-weight: 700;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-  }
-
-  .projects-table-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 $spacing-xxxl; 
-    width: 100%;
-    background: $bg-glass-light;
-    padding: $item-padding; 
-    border-radius: $border-radius-m;
-    -webkit-backdrop-filter: blur(10px);
-
-    box-shadow: $shadow-box-light;
-    overflow-x: auto;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-
-    th,
-    td {
-      padding: $spacing-l $spacing-m;
-      text-align: left;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-      color: $text-color-light;
-      line-height: 1.7;
-      font-size: $item-text-size;
-    }
-
-    th {
-      font-weight: 500;
-      font-size: 1rem;
-      background-color: rgba(0, 0, 0, 0.1);
-      white-space: normal;
-      word-break: break-word;
-    }
-
-    tbody tr {
-      transition: background-color 0.2s ease;
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.08);
-      }
-      &:last-child {
-        td {
-          border-bottom: none;
-        }
-      }
-    }
-  }
-}
-
-&:nth-child(5) {
   background: url('https://images.pexels.com/photos/354939/pexels-photo-354939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
   .agu-display {
     font-family: "Agu Display", serif;
@@ -458,7 +397,7 @@ background: url('https://images.pexels.com/photos/28304438/pexels-photo-28304438
 }
 
 
-  &:nth-child(6) {
+  &:nth-child(5) {
     background: url('https://images.pexels.com/photos/122892/pexels-photo-122892.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
 
     > div {

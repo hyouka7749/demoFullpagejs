@@ -188,7 +188,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         loadContent('about.html', 'about-section'),
         loadContent('portfolio.html', 'portfolio-section'),
-        loadContent('services.html', 'services-section'),
         loadContent('gallary.html', 'gallary-section'),
         
       ]).then(() => {
@@ -274,12 +273,6 @@ document.addEventListener('DOMContentLoaded', function() {
         baseDelay = 50;
         if(aboutTitle) animateElements([aboutTitle],0);
         if(aboutItems.length > 0) animateElements(aboutItems,100);
-      } else if (destination.anchor === 'services') {
-        const servicesTitle = currentSectionOrSlide.querySelector('.services-content h2');
-        const serviceItems = currentSectionOrSlide.querySelectorAll('.service-item');
-        baseDelay = 50;
-        if(servicesTitle) animateElements([servicesTitle],0);
-        if(serviceItems.length > 0) animateElements(serviceItems,100);
       } else if (destination.anchor === 'contact') {
         const contactTitle = currentSectionOrSlide.querySelector('.contact-content h2');
         const contactSubtitle = currentSectionOrSlide.querySelector('.contact-content .contact-subtitle');
