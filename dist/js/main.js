@@ -307,8 +307,3 @@ function onPlayerStateChange(event) {
     console.log('Video is playing.');
   }
 }
-function playVideo() { if (player && typeof player.playVideo === 'function') player.playVideo(); }
-function pauseVideo() { if (player && typeof player.pauseVideo === 'function') player.pauseVideo(); }
-function stopVideo() { if (player && typeof player.stopVideo === 'function') player.stopVideo(); }
-function muteVideo() { if (player && typeof player.mute === 'function') player.mute(); }
-function unMuteVideo() { if (player && typeof player.unMute === 'function') player.unMute(); }

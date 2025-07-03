@@ -8,7 +8,7 @@ html(lang="vi")
     link(rel="icon", type="image/x-icon",sizes="32x32", href="/assets/images/coffee.ico")
   body
     video#myVideo(control poster="/assets/images/b3.jpg", preload="auto", muted, loop) 
-      source(src="/assets/videos/ggbr.mp4", type="video/mp4")
+      source(type="video/mp4")
 
     .main-container
       .logo
@@ -32,22 +32,25 @@ html(lang="vi")
       document.addEventListener('DOMContentLoaded', function() {
         const logo = document.querySelector('.logo img');
         const video = document.getElementById('myVideo');
+        const videoSource = video.querySelector('source');
 
-        const playVideo = () => {
-          if (video) {
+        const setVideoSrcAndPlay = () => {
+          if (videoSource && video) {
+            videoSource.src = "/assets/videos/ggbr.mp4";
+            video.load();
             video.play()
               .catch(error => {
                 console.warn('Video autoplay prevented or failed:', error);
               });
           } else {
-            console.error('Video not found.');
+            console.error('Video or video source not found.');
           }
         };
         
         if (logo.complete) {
-          playVideo();
+          setVideoSrcAndPlay();
         } else {
-          logo.addEventListener('load', playVideo);
+          logo.addEventListener('load', setVideoSrcAndPlay);
           logo.addEventListener('error', () => {
             console.error('Logo failed to load');
           });
